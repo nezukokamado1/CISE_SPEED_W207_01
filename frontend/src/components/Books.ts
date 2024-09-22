@@ -1,20 +1,34 @@
 export type Book = {
     _id?: string;
-    title?: string;
-    isbn?: string;
-    author?: string;
-    description?: string;
-    published_date?: Date;
-    publisher?: string;
+    title: string; // Required
+    authors: string; // Required 
+    journalName: string; // Required 
+    publicationYear: string; // Required 
+    volume?: string; // Optional
+    issueNumber?: string; // Optional
+    pages?: string; // Optional
+    doi: string; // Required
+    keywords?: string; // Optional
+    typeOfResearch?: string; // Optional
+    abstract?: string; // Optional
+    institution?: string; // Optional
     updated_date?: Date;
-    };
-    export const DefaultEmptyBook: Book = {
+  };
+  
+  export const DefaultEmptyBook: Book = {
     _id: undefined,
     title: '',
-    isbn: '',
-    author: '',
-    description: '',
-published_date: undefined,
-publisher: '',
-updated_date: undefined,
-}
+    authors: '',
+    journalName: '',
+    publicationYear: '',
+    volume: '',
+    issueNumber: '',
+    pages: '',
+    doi: '',
+    keywords: '',
+    typeOfResearch: '',
+    abstract: '',
+    institution: '',
+    updated_date: undefined,
+  };
+  
