@@ -1,9 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, ChangeEvent, FormEvent, useState, useEffect } from 'react';
 import Link from 'next/link';
 import BookCard from './BookCard';
 import { Book } from './Books';
+import { Input } from 'postcss';
 function ShowBookList() {
     const [books, setBooks] = useState<[Book?]>([]);
+    var input = '';
+    const onChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        input = event.target.name;
+      };
+    const onSearch = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        fetch("http://localhost:8082/api/books", {
+          method: 'POST',
+          headers: { "Content-Type": "application/json" },
+          body: input,
+        })
+          .then((res) => {
+            // display books from search here
+            console.log("here2");
+          })
+          .catch((err) => {
+            console.log("Error from ShowBookList: " + err);
+          });
+      };
     useEffect(() => {
         fetch('http://localhost:8082/api/books')
             .then((res) => {
@@ -42,6 +62,24 @@ function ShowBookList() {
                     >
                         + Add New Book
                     </Link>
+                    
+                    <form noValidate onSubmit={onSearch}>
+                        <button
+                            className='btn btn-outline-warning float-left'
+                            type='submit'
+                        >
+                            Search
+                        </button>
+                        <input 
+                            type="text"
+                            placeholder="Article Name"
+                            name="title"
+                            className='form-control'
+                            required
+                            onChange={onChange}>
+
+                        </input>
+                    </form>
                     <br />
                     <br />
                     <hr />
