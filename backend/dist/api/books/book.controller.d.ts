@@ -5,6 +5,7 @@ export declare class BookController {
     constructor(bookService: BookService);
     test(): string;
     findAll(): Promise<import("./book.schema").Book[]>;
+    findByTitle(title: string): Promise<import("./book.schema").Book[]>;
     findOne(id: string): Promise<import("./book.schema").Book>;
     addBook(createBookDto: CreateBookDto): Promise<{
         message: string;

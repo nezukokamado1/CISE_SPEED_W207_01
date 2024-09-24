@@ -35,7 +35,26 @@ let BookController = class BookController {
             }, common_1.HttpStatus.NOT_FOUND, { cause: console_1.error });
         }
     }
+    async findByTitle(title) {
+        try {
+            const books = await this.bookService.findByTitle(title);
+            if (books.length === 0) {
+                throw new common_1.HttpException({
+                    status: common_1.HttpStatus.NOT_FOUND,
+                    error: `No books found with title: ${title}`,
+                }, common_1.HttpStatus.NOT_FOUND);
+            }
+            return books;
+        }
+        catch (error) {
+            throw new common_1.HttpException({
+                status: common_1.HttpStatus.INTERNAL_SERVER_ERROR,
+                error: 'Error occurred while fetching books by title',
+            }, common_1.HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
     async findOne(id) {
+        console.log("here");
         try {
             return this.bookService.findOne(id);
         }
@@ -95,6 +114,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], BookController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)('/title/:title'),
+    __param(0, (0, common_1.Param)('title')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], BookController.prototype, "findByTitle", null);
 __decorate([
     (0, common_1.Get)('/:id'),
     __param(0, (0, common_1.Param)('id')),

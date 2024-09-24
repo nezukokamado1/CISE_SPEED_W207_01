@@ -40,6 +40,9 @@ let BookService = class BookService {
         const deletedBook = await this.bookModel.findByIdAndDelete(id).exec();
         return deletedBook;
     }
+    async findByTitle(title) {
+        return await this.bookModel.find({ title: { $regex: title, $options: 'i' } }).exec();
+    }
 };
 exports.BookService = BookService;
 exports.BookService = BookService = __decorate([

@@ -16,4 +16,5 @@ export declare class BookService {
     delete(id: string): Promise<import("mongoose").Document<unknown, {}, Book> & Book & {
         _id: import("mongoose").Types.ObjectId;
     }>;
+    findByTitle(title: string): Promise<Book[]>;
 }
