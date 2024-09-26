@@ -1,10 +1,18 @@
-import { Date } from 'mongoose';
 export class CreateBookDto {
-title: string;
-isbn: string;
-author: string;
-description: string;
-published_date: Date;
-publisher: string;
-updated_date: Date;
-}
+    title: string;
+    authors: string;
+    journalName: string;
+    publicationYear: string;
+    volume?: string;
+    issueNumber?: string;
+    pages?: string;
+    doi: string;
+    keywords?: string;
+    typeOfResearch?: string;
+    abstract?: string;
+    institution?: string;
+    published_date: string;
+    publisher: string;
+    updated_date: string;
+  }
+  
