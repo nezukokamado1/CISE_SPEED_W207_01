@@ -1,10 +1,18 @@
-import { Date, HydratedDocument } from 'mongoose';
+import { HydratedDocument } from 'mongoose';
 export type BookDocument = HydratedDocument<Book>;
 export declare class Book {
     title: string;
-    isbn: string;
-    author: string;
-    description: string;
+    authors: string;
+    journalName: string;
+    publicationYear: string;
+    volume: string;
+    issueNumber: string;
+    pages: string;
+    doi: string;
+    keywords: string;
+    typeOfResearch: string;
+    abstract: string;
+    institution: string;
     published_date: Date;
     publisher: string;
     updated_date: Date;

@@ -21,18 +21,50 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
-], Book.prototype, "isbn", void 0);
+], Book.prototype, "authors", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
-], Book.prototype, "author", void 0);
+], Book.prototype, "journalName", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
+], Book.prototype, "publicationYear", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
-], Book.prototype, "description", void 0);
+], Book.prototype, "volume", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Book.prototype, "issueNumber", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Book.prototype, "pages", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
+], Book.prototype, "doi", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Book.prototype, "keywords", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Book.prototype, "typeOfResearch", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Book.prototype, "abstract", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Book.prototype, "institution", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ type: Date }),
-    __metadata("design:type", Object)
+    __metadata("design:type", Date)
 ], Book.prototype, "published_date", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
@@ -40,7 +72,7 @@ __decorate([
 ], Book.prototype, "publisher", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ type: Date, default: Date.now }),
-    __metadata("design:type", Object)
+    __metadata("design:type", Date)
 ], Book.prototype, "updated_date", void 0);
 exports.Book = Book = __decorate([
     (0, mongoose_1.Schema)()

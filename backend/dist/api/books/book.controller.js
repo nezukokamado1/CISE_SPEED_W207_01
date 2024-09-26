@@ -54,7 +54,6 @@ let BookController = class BookController {
         }
     }
     async findOne(id) {
-        console.log("here");
         try {
             return this.bookService.findOne(id);
         }
