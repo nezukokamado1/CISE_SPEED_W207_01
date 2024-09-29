@@ -1,0 +1,45 @@
+/* SubmissionForm.css */
+.submission-form {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  max-width: 600px;
+  margin: auto;
+}
+
+h2 {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+button {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.status-indicator {
+  margin-left: 10px;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}

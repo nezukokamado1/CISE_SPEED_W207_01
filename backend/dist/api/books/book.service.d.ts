@@ -20,4 +20,5 @@ export declare class BookService {
     rateBook(id: string, rating: number): Promise<{
         averageRating: number;
     }>;
+    findDuplicates(title: string, authors: string, journalName: string): Promise<Book[]>;
 }

@@ -1,1 +1,1 @@
-{"version":3,"file":"create-book.dto.js","sourceRoot":"","sources":["../../../src/api/books/create-book.dto.ts"],"names":[],"mappings":";;;AAAA,MAAa,aAAa;CAgBvB;AAhBH,sCAgBG"}
+{"version":3,"file":"create-book.dto.js","sourceRoot":"","sources":["../../../src/api/books/create-book.dto.ts"],"names":[],"mappings":";;;AAAA,MAAa,aAAa;CAkBvB;AAlBH,sCAkBG"}

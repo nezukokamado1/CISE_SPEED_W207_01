@@ -66,3 +66,13 @@ body {
   align-items: center;
   margin-top: 10px;
 }
+
+.red-cross {
+  color: red;
+  margin-left: 10px;
+}
+
+.green-tick {
+  color: green;
+  margin-left: 10px;
+}

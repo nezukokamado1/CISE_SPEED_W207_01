@@ -56,6 +56,12 @@ export class Book {
   @Prop({ type: Number, default: 0 })
   averageRating: number;
 
+  @Prop({ type: Date, default: Date.now })
+createdAt: Date;
+
+
+  
+
 }
 
 export const BookSchema = SchemaFactory.createForClass(Book);
