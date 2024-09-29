@@ -59,3 +59,10 @@ body {
 .popup-box button {
   margin: 10px;
 }
+
+.rating-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}

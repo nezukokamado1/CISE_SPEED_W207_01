@@ -28,4 +28,23 @@ export class BookService {
     async findByTitle(title: string): Promise<Book[]> {
         return await this.bookModel.find({ title: { $regex: title, $options: 'i' } }).exec();
     }
+
+    async rateBook(id: string, rating: number): Promise<{ averageRating: number }> {
+        const book = await this.bookModel.findById(id);
+        if (!book) {
+            throw new Error('Book not found');
+        }
+    
+        book.ratings.push(rating);
+        book.averageRating = book.ratings.reduce((sum, r) => sum + r, 0) / book.ratings.length;
+    
+        await book.save();
+        return { averageRating: book.averageRating }; // Ensure you return the new average rating
+    }
+    
+    
+    
+    
+    
+    
 }
