@@ -18,6 +18,7 @@ export declare class Book {
     updated_date: Date;
     ratings: number[];
     averageRating: number;
+    createdAt: Date;
 }
 export declare const BookSchema: import("mongoose").Schema<Book, import("mongoose").Model<Book, any, any, any, import("mongoose").Document<unknown, any, Book> & Book & {
     _id: import("mongoose").Types.ObjectId;

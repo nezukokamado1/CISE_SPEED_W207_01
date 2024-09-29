@@ -11,19 +11,22 @@ import {
 } from '@nestjs/common';
 import { BookService } from './book.service';
 import { CreateBookDto } from './create-book.dto';
-import { error } from 'console';
+import { Book } from './book.schema'; // Import the Book type
+
 @Controller('api/books')
 export class BookController {
     constructor(private readonly bookService: BookService) { }
+
     @Get('/test')
     test() {
         return this.bookService.test();
-    }// Get all books
+    }
+
     @Get('/')
     async findAll() {
         try {
-            return this.bookService.findAll();
-        } catch {
+            return await this.bookService.findAll();
+        } catch (error) {
             throw new HttpException(
                 {
                     status: HttpStatus.NOT_FOUND,
@@ -34,7 +37,7 @@ export class BookController {
             );
         }
     }
-    // Get a book by title (new route)
+
     @Get('/title/:title')
     async findByTitle(@Param('title') title: string) {
         try {
@@ -59,12 +62,12 @@ export class BookController {
             );
         }
     }
-    // Get one book via id
+
     @Get('/:id')
     async findOne(@Param('id') id: string) {
         try {
-            return this.bookService.findOne(id);
-        } catch {
+            return await this.bookService.findOne(id);
+        } catch (error) {
             throw new HttpException(
                 {
                     status: HttpStatus.NOT_FOUND,
@@ -75,13 +78,13 @@ export class BookController {
             );
         }
     }
-    // Create/add a book
+
     @Post('/')
     async addBook(@Body() createBookDto: CreateBookDto) {
         try {
-            await this.bookService.create(createBookDto);
-            return { message: 'Book added successfully' };
-        } catch {
+            const newBook = await this.bookService.create(createBookDto);
+            return { message: 'Book added successfully', book: newBook };
+        } catch (error) {
             throw new HttpException(
                 {
                     status: HttpStatus.BAD_REQUEST,
@@ -92,16 +95,16 @@ export class BookController {
             );
         }
     }
-    // Update a book
+
     @Put('/:id')
     async updateBook(
         @Param('id') id: string,
         @Body() createBookDto: CreateBookDto,
     ) {
         try {
-            await this.bookService.update(id, createBookDto);
-            return { message: 'Book updated successfully' };
-        } catch {
+            const updatedBook = await this.bookService.update(id, createBookDto);
+            return { message: 'Book updated successfully', book: updatedBook };
+        } catch (error) {
             throw new HttpException(
                 {
                     status: HttpStatus.BAD_REQUEST,
@@ -112,14 +115,14 @@ export class BookController {
             );
         }
     }
-    // Delete a book via id
+
     @Delete('/:id')
     async deleteBook(@Param('id') id: string) {
         try {
-            return await await this.bookService.delete(id);
-        } catch {
+            const deletedBook = await this.bookService.delete(id);
+            return { message: 'Book deleted successfully', book: deletedBook };
+        } catch (error) {
             throw new HttpException(
-
                 {
                     status: HttpStatus.NOT_FOUND,
                     error: 'No such a book',
@@ -136,5 +139,27 @@ export class BookController {
         @Body('rating') rating: number,
     ): Promise<{ averageRating: number }> {
         return this.bookService.rateBook(id, rating);
+    }
+
+    @Post('check-duplicates')
+    async checkDuplicates(@Body() book: Partial<Book>) {
+        const duplicates = await this.bookService.checkDuplicates(book);
+        return { duplicates };
+    }
+
+    @Get('recent')
+    async getRecentBooks() {
+        try {
+            const recentBooks = await this.bookService.getRecentBooks();
+            return recentBooks;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.INTERNAL_SERVER_ERROR,
+                    error: 'Error occurred while fetching recent books',
+                },
+                HttpStatus.INTERNAL_SERVER_ERROR,
+            );
+        }
     }
 }

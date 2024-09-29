@@ -1,46 +1,66 @@
-'use client';
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { Book } from './Books';
+import BookCard from './BookCard';
 
 const SubmissionForm = () => {
-    const [recentSubmissions, setRecentSubmissions] = useState<any[]>([]);
+    const [submittedBooks, setSubmittedBooks] = useState<(Book & { isDuplicate?: boolean })[]>([]);
+    const [error, setError] = useState<string | null>(null);
+    const [showAllBooks, setShowAllBooks] = useState(true);
 
     useEffect(() => {
-        const fetchRecentSubmissions = async () => {
-            try {
-                const response = await axios.get('http://localhost:3000/api/books');
-                setRecentSubmissions(response.data);
-            } catch (error) {
-                console.error('Error fetching recent submissions:', error);
-            }
-        };
+        fetchBooks();
+    }, [showAllBooks]);
 
-        fetchRecentSubmissions();
-    }, []);
+    const fetchBooks = async () => {
+        try {
+            const endpoint = showAllBooks ? 'http://localhost:8082/api/books' : 'http://localhost:8082/api/books/recent';
+            const response = await fetch(endpoint);
+            if (!response.ok) {
+                throw new Error('Failed to fetch books');
+            }
+            const data = await response.json();
+            setSubmittedBooks(data);
+        } catch (err) {
+            setError('An error occurred while fetching books.');
+        }
+    };
+
+    const generateBookKey = (book: Book) => {
+        return `${book.title}-${book.authors}-${book.journalName}`;
+    };
+
+    const getUniqueBooks = (books: Book[]) => {
+        const uniqueKeys = new Set();
+        return books.map(book => {
+            const key = generateBookKey(book);
+            const isDuplicate = uniqueKeys.has(key);
+            uniqueKeys.add(key);
+            return { ...book, isDuplicate };
+        });
+    };
 
     return (
-        <div className="max-w-lg mx-auto p-4">
-            <h1 className="text-2xl font-bold mb-4">Moderate Submissions</h1>
-
-            <h3 className="text-xl font-semibold mt-6">Recent Submissions:</h3>
-            <ul className="mt-2">
-                {recentSubmissions.length > 0 ? (
-                    recentSubmissions.map((submission) => (
-                        <li key={submission._id} className="flex items-center justify-between">
-                            <span>
-                                {submission.title} by {submission.authors} - {submission.journalName}
+        <div className="submission-form">
+            <div className="book-list">
+                <h2 className="title">{showAllBooks ? 'All Submitted Books' : 'Recent Submissions'}</h2>
+                <button 
+                    className="toggleButton"
+                    onClick={() => setShowAllBooks(!showAllBooks)}
+                >
+                    {showAllBooks ? 'Show Recent' : 'Show All'}
+                </button>
+                <div className="bookGrid">
+                    {getUniqueBooks(submittedBooks).map((book, index) => (
+                        <div key={index} className="bookEntry">
+                            <BookCard book={book} />
+                            <span className={book.isDuplicate ? "duplicateIndicator" : "uniqueIndicator"}>
+                                {book.isDuplicate ? '❌' : '✅'}
                             </span>
-                            {submission.isDuplicate ? (
-                                <span className="text-red-600">❌</span> // Red Cross for duplicates
-                            ) : (
-                                <span className="text-green-600">✔️</span> // Green Tick for non-duplicates
-                            )}
-                        </li>
-                    ))
-                ) : (
-                    <li>No recent submissions found.</li>
-                )}
-            </ul>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            {error && <div className="error">{error}</div>}
         </div>
     );
 };

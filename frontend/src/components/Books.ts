@@ -13,6 +13,7 @@ export type Book = {
     abstract?: string; // Optional
     institution?: string; // Optional
     updated_date?: Date;
+    isDuplicate?: boolean;
   };
   
   export const DefaultEmptyBook: Book = {

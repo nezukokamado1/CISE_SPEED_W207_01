@@ -53,13 +53,6 @@ let BookService = class BookService {
         await book.save();
         return { averageRating: book.averageRating };
     }
-    async findDuplicates(title, authors, journalName) {
-        return await this.bookModel.find({
-            title: { $regex: title, $options: 'i' },
-            authors: { $regex: authors, $options: 'i' },
-            journalName: { $regex: journalName, $options: 'i' },
-        }).exec();
-    }
 };
 exports.BookService = BookService;
 exports.BookService = BookService = __decorate([

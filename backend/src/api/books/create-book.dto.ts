@@ -16,5 +16,6 @@ export class CreateBookDto {
     updated_date: string;
     rating: number;
     averageRating?: number;
+    createdAt?: Date;
   }
   

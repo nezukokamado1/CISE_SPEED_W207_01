@@ -19,11 +19,4 @@ export declare class BookController {
     rateBook(id: string, rating: number): Promise<{
         averageRating: number;
     }>;
-    checkForDuplicates(body: {
-        title: string;
-        authors: string;
-        journalName: string;
-    }): Promise<{
-        duplicates: import("./book.schema").Book[];
-    }>;
 }

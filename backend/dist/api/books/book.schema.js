@@ -82,6 +82,10 @@ __decorate([
     (0, mongoose_1.Prop)({ type: Number, default: 0 }),
     __metadata("design:type", Number)
 ], Book.prototype, "averageRating", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ type: Date, default: Date.now }),
+    __metadata("design:type", Date)
+], Book.prototype, "createdAt", void 0);
 exports.Book = Book = __decorate([
     (0, mongoose_1.Schema)()
 ], Book);
