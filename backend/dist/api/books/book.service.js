@@ -53,6 +53,19 @@ let BookService = class BookService {
         await book.save();
         return { averageRating: book.averageRating };
     }
+    async checkDuplicates(book) {
+        return this.bookModel.find({
+            title: { $regex: new RegExp(book.title, 'i') },
+            authors: { $regex: new RegExp(book.authors, 'i') },
+            journalName: { $regex: new RegExp(book.journalName, 'i') }
+        }).exec();
+    }
+    async getRecentBooks() {
+        return this.bookModel.find()
+            .sort({ createdAt: -1 })
+            .limit(10)
+            .exec();
+    }
 };
 exports.BookService = BookService;
 exports.BookService = BookService = __decorate([

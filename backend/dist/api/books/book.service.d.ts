@@ -20,4 +20,6 @@ export declare class BookService {
     rateBook(id: string, rating: number): Promise<{
         averageRating: number;
     }>;
+    checkDuplicates(book: Partial<Book>): Promise<Book[]>;
+    getRecentBooks(): Promise<Book[]>;
 }

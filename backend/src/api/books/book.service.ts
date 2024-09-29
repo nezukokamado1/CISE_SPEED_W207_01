@@ -42,7 +42,20 @@ export class BookService {
         return { averageRating: book.averageRating }; // Ensure you return the new average rating
     }
 
+    async checkDuplicates(book: Partial<Book>): Promise<Book[]> {
+        return this.bookModel.find({
+            title: { $regex: new RegExp(book.title, 'i') },
+            authors: { $regex: new RegExp(book.authors, 'i') },
+            journalName: { $regex: new RegExp(book.journalName, 'i') }
+        }).exec();
+    }
     
+      async getRecentBooks(): Promise<Book[]> {
+        return this.bookModel.find()
+          .sort({ createdAt: -1 })
+          .limit(10)
+          .exec();
+      }
 
     
 }
