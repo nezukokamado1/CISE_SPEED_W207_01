@@ -129,4 +129,12 @@ export class BookController {
             );
         }
     }
+
+    @Post(':id/rate')
+    async rateBook(
+        @Param('id') id: string,
+        @Body('rating') rating: number,
+    ): Promise<{ averageRating: number }> {
+        return this.bookService.rateBook(id, rating);
+    }
 }

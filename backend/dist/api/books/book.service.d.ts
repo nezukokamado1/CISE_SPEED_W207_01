@@ -17,4 +17,7 @@ export declare class BookService {
         _id: import("mongoose").Types.ObjectId;
     }>;
     findByTitle(title: string): Promise<Book[]>;
+    rateBook(id: string, rating: number): Promise<{
+        averageRating: number;
+    }>;
 }

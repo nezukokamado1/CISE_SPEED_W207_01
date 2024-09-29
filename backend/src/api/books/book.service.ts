@@ -42,9 +42,6 @@ export class BookService {
         return { averageRating: book.averageRating }; // Ensure you return the new average rating
     }
     
-    
-    
-    
-    
+
     
 }

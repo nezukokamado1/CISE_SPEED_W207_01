@@ -16,4 +16,7 @@ export declare class BookController {
     deleteBook(id: string): Promise<import("mongoose").Document<unknown, {}, import("./book.schema").Book> & import("./book.schema").Book & {
         _id: import("mongoose").Types.ObjectId;
     }>;
+    rateBook(id: string, rating: number): Promise<{
+        averageRating: number;
+    }>;
 }

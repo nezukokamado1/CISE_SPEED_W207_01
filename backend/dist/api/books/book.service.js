@@ -43,6 +43,16 @@ let BookService = class BookService {
     async findByTitle(title) {
         return await this.bookModel.find({ title: { $regex: title, $options: 'i' } }).exec();
     }
+    async rateBook(id, rating) {
+        const book = await this.bookModel.findById(id);
+        if (!book) {
+            throw new Error('Book not found');
+        }
+        book.ratings.push(rating);
+        book.averageRating = book.ratings.reduce((sum, r) => sum + r, 0) / book.ratings.length;
+        await book.save();
+        return { averageRating: book.averageRating };
+    }
 };
 exports.BookService = BookService;
 exports.BookService = BookService = __decorate([

@@ -99,6 +99,9 @@ let BookController = class BookController {
             }, common_1.HttpStatus.NOT_FOUND, { cause: console_1.error });
         }
     }
+    async rateBook(id, rating) {
+        return this.bookService.rateBook(id, rating);
+    }
 };
 exports.BookController = BookController;
 __decorate([
@@ -149,6 +152,14 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], BookController.prototype, "deleteBook", null);
+__decorate([
+    (0, common_1.Post)(':id/rate'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)('rating')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Number]),
+    __metadata("design:returntype", Promise)
+], BookController.prototype, "rateBook", null);
 exports.BookController = BookController = __decorate([
     (0, common_1.Controller)('api/books'),
     __metadata("design:paramtypes", [book_service_1.BookService])
