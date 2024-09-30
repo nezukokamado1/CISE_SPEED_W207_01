@@ -66,44 +66,46 @@ body {
   align-items: center;
   margin-top: 10px;
 }
-
 .submissionForm {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
 
-.bookList {
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .title {
   font-size: 24px;
-  color: #333;
-  margin-bottom: 20px;
+  margin: 0;
+}
+
+.linkButton, .toggleButton {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.linkButton {
+  background-color: #ffc107;
+  color: #000;
 }
 
 .toggleButton {
   background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-bottom: 20px;
-}
-
-.toggleButton:hover {
-  background-color: #0056b3;
+  color: #fff;
 }
 
 .bookGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
 }
 
@@ -115,14 +117,26 @@ body {
   position: absolute;
   top: 10px;
   right: 10px;
-  font-size: 20px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.duplicateIndicator {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.uniqueIndicator {
+  background-color: #28a745;
+  color: #fff;
 }
 
 .error {
   color: #dc3545;
-  margin-top: 20px;
-  padding: 10px;
   background-color: #f8d7da;
   border: 1px solid #f5c6cb;
+  padding: 10px;
   border-radius: 4px;
+  margin-top: 20px;
 }

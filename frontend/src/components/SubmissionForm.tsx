@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Book } from './Books';
 import BookCard from './BookCard';
+import Link from 'next/link';
 
 const SubmissionForm = () => {
     const [submittedBooks, setSubmittedBooks] = useState<(Book & { isDuplicate?: boolean })[]>([]);
@@ -40,25 +41,28 @@ const SubmissionForm = () => {
     };
 
     return (
-        <div className="submission-form">
-            <div className="book-list">
-                <h2 className="title">{showAllBooks ? 'All Submitted Books' : 'Recent Submissions'}</h2>
+        <div className="submissionForm">
+            <div className="header">
+                <Link href="/" className="linkButton">
+                    Show Book List
+                </Link>
+                <h1 className="title">{showAllBooks ? 'All Submitted Books' : 'Recent Submissions'}</h1>
                 <button 
                     className="toggleButton"
                     onClick={() => setShowAllBooks(!showAllBooks)}
                 >
                     {showAllBooks ? 'Show Recent' : 'Show All'}
                 </button>
-                <div className="bookGrid">
-                    {getUniqueBooks(submittedBooks).map((book, index) => (
-                        <div key={index} className="bookEntry">
-                            <BookCard book={book} />
-                            <span className={book.isDuplicate ? "duplicateIndicator" : "uniqueIndicator"}>
-                                {book.isDuplicate ? '❌' : '✅'}
-                            </span>
-                        </div>
-                    ))}
-                </div>
+            </div>
+            <div className="bookGrid">
+                {getUniqueBooks(submittedBooks).map((book, index) => (
+                    <div key={index} className="bookEntry">
+                        <BookCard book={book} />
+                        <span className={book.isDuplicate ? "duplicateIndicator" : "uniqueIndicator"}>
+                            {book.isDuplicate ? '❌ Duplicate' : '✅ Unique'}
+                        </span>
+                    </div>
+                ))}
             </div>
             {error && <div className="error">{error}</div>}
         </div>
