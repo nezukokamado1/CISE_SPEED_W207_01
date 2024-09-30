@@ -140,3 +140,76 @@ body {
   border-radius: 4px;
   margin-top: 20px;
 }
+
+/* Existing styles... */
+
+.showBookList {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 24px;
+  margin: 0;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 10px;
+}
+
+.linkButton {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #ffc107;
+  color: #000;
+}
+
+.searchForm {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.searchInput {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.searchButton {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.no-books {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+}
+
+/* Ensure this matches the style in SubmissionForm */
+.bookGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
