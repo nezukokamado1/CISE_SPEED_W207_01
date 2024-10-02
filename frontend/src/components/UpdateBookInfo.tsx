@@ -56,7 +56,7 @@ function UpdateBookInfo() {
                     </div>
                     <div className="col-md-8 m-auto">
                         <h1 className="display-4 text-center">Edit Book</h1>
-                        <p className="lead text-center">Update Book's Info</p>
+                        <p className="lead text-center">Update Book&apos;s Info</p>
                     </div>
                 </div>
                 <div className="col-md-8 m-auto">
