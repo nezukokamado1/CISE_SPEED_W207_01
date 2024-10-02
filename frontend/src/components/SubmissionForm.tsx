@@ -43,7 +43,7 @@ const SubmissionForm = () => {
     return (
         <div className="submissionForm">
             <div className="header">
-                <Link href="/" className="linkButton">
+                <Link href="/moderator-page" className="linkButton">
                     Show Book List
                 </Link>
                 <h1 className="title">{showAllBooks ? 'All Submitted Books' : 'Recent Submissions'}</h1>
