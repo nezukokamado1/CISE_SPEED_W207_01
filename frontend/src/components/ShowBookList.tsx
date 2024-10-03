@@ -2,20 +2,26 @@ import React, { ChangeEvent, FormEvent, useState, useEffect } from 'react';
 import Link from 'next/link';
 import BookCard from './BookCard';
 import { Book } from './Books';
+import { Dropdown } from 'react-bootstrap';
 
 function ShowBookList() {
     const [books, setBooks] = useState<Book[]>([]);
     const [input, setInput] = useState('');
+    const [filter, setFilter] = useState('');
 
     // Handle input changes
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         setInput(event.target.value);
     };
 
+    const onFilter = (event: ChangeEvent<HTMLSelectElement>) => {
+        setFilter(event.target.value);
+    }
+
     // Handle search form submission
     const onSearch = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        fetch(`http://localhost:8082/api/books/title/${input}`)
+        fetch(`http://localhost:8082/api/books/${filter}/${input}`)
             .then((res) => {
                 if (!res.ok) {
                     fetchAllBooks();
@@ -69,6 +75,16 @@ function ShowBookList() {
                         required
                         onChange={onChange}
                     />
+                        <select
+                            name="filter"
+                            value={filter}
+                            onChange={onFilter}
+                        >
+                            <option value="title">Title</option>
+                            <option value="authors">Author</option>
+                            <option value="journalName">Journal</option>
+                            <option value="publicationYear">Year</option>
+                        </select>
                     <button className='searchButton' type='submit'>
                         Search
                     </button>

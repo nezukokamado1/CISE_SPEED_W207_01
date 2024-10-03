@@ -7,6 +7,9 @@ export declare class BookController {
     test(): string;
     findAll(): Promise<Book[]>;
     findByTitle(title: string): Promise<Book[]>;
+    findByAuthor(author: string): Promise<Book[]>;
+    findByJournal(journal: string): Promise<Book[]>;
+    findByYear(publicationYear: string): Promise<Book[]>;
     findOne(id: string): Promise<Book>;
     addBook(createBookDto: CreateBookDto): Promise<{
         message: string;

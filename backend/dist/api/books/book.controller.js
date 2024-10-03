@@ -53,6 +53,60 @@ let BookController = class BookController {
             }, common_1.HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    async findByAuthor(author) {
+        try {
+            const books = await this.bookService.findByAuthor(author);
+            if (books.length === 0) {
+                throw new common_1.HttpException({
+                    status: common_1.HttpStatus.NOT_FOUND,
+                    error: `No books found with author: ${author}`,
+                }, common_1.HttpStatus.NOT_FOUND);
+            }
+            return books;
+        }
+        catch (error) {
+            throw new common_1.HttpException({
+                status: common_1.HttpStatus.INTERNAL_SERVER_ERROR,
+                error: 'Error occurred while fetching books by author',
+            }, common_1.HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    async findByJournal(journal) {
+        try {
+            const books = await this.bookService.findByJournal(journal);
+            if (books.length === 0) {
+                throw new common_1.HttpException({
+                    status: common_1.HttpStatus.NOT_FOUND,
+                    error: `No books found with journal: ${journal}`,
+                }, common_1.HttpStatus.NOT_FOUND);
+            }
+            return books;
+        }
+        catch (error) {
+            throw new common_1.HttpException({
+                status: common_1.HttpStatus.INTERNAL_SERVER_ERROR,
+                error: 'Error occurred while fetching books by journal',
+            }, common_1.HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    async findByYear(publicationYear) {
+        try {
+            const books = await this.bookService.findByYear(publicationYear);
+            if (books.length === 0) {
+                throw new common_1.HttpException({
+                    status: common_1.HttpStatus.NOT_FOUND,
+                    error: `No books found with publicationYear: ${publicationYear}`,
+                }, common_1.HttpStatus.NOT_FOUND);
+            }
+            return books;
+        }
+        catch (error) {
+            throw new common_1.HttpException({
+                status: common_1.HttpStatus.INTERNAL_SERVER_ERROR,
+                error: 'Error occurred while fetching books by publicationYear',
+            }, common_1.HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
     async findOne(id) {
         try {
             return this.bookService.findOne(id);
@@ -147,6 +201,27 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], BookController.prototype, "findByTitle", null);
+__decorate([
+    (0, common_1.Get)('/authors/:authors'),
+    __param(0, (0, common_1.Param)('authors')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], BookController.prototype, "findByAuthor", null);
+__decorate([
+    (0, common_1.Get)('/journalName/:journalName'),
+    __param(0, (0, common_1.Param)('journalName')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], BookController.prototype, "findByJournal", null);
+__decorate([
+    (0, common_1.Get)('/publicationYear/:publicationYear'),
+    __param(0, (0, common_1.Param)('publicationYear')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], BookController.prototype, "findByYear", null);
 __decorate([
     (0, common_1.Get)('/:id'),
     __param(0, (0, common_1.Param)('id')),

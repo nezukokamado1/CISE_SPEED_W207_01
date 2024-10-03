@@ -35,7 +35,7 @@ export class BookController {
             );
         }
     }
-    // Get a book by title (new route)
+    // Get a book by title
     @Get('/title/:title')
     async findByTitle(@Param('title') title: string) {
         try {
@@ -55,6 +55,81 @@ export class BookController {
                 {
                     status: HttpStatus.INTERNAL_SERVER_ERROR,
                     error: 'Error occurred while fetching books by title',
+                },
+                HttpStatus.INTERNAL_SERVER_ERROR,
+            );
+        }
+    }
+    // Get a book by author
+    @Get('/authors/:authors')
+    async findByAuthor(@Param('authors') author: string) {
+        try {
+            const books = await this.bookService.findByAuthor(author);
+            if (books.length === 0) {
+                throw new HttpException(
+                    {
+                        status: HttpStatus.NOT_FOUND,
+                        error: `No books found with author: ${author}`,
+                    },
+                    HttpStatus.NOT_FOUND,
+                );
+            }
+            return books;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.INTERNAL_SERVER_ERROR,
+                    error: 'Error occurred while fetching books by author',
+                },
+                HttpStatus.INTERNAL_SERVER_ERROR,
+            );
+        }
+    }
+    // Get a book by journal
+    @Get('/journalName/:journalName')
+    async findByJournal(@Param('journalName') journal: string) {
+        try {
+            const books = await this.bookService.findByJournal(journal);
+            if (books.length === 0) {
+                throw new HttpException(
+                    {
+                        status: HttpStatus.NOT_FOUND,
+                        error: `No books found with journal: ${journal}`,
+                    },
+                    HttpStatus.NOT_FOUND,
+                );
+            }
+            return books;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.INTERNAL_SERVER_ERROR,
+                    error: 'Error occurred while fetching books by journal',
+                },
+                HttpStatus.INTERNAL_SERVER_ERROR,
+            );
+        }
+    }
+    // Get a book by year
+    @Get('/publicationYear/:publicationYear')
+    async findByYear(@Param('publicationYear') publicationYear: string) {
+        try {
+            const books = await this.bookService.findByYear(publicationYear);
+            if (books.length === 0) {
+                throw new HttpException(
+                    {
+                        status: HttpStatus.NOT_FOUND,
+                        error: `No books found with publicationYear: ${publicationYear}`,
+                    },
+                    HttpStatus.NOT_FOUND,
+                );
+            }
+            return books;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.INTERNAL_SERVER_ERROR,
+                    error: 'Error occurred while fetching books by publicationYear',
                 },
                 HttpStatus.INTERNAL_SERVER_ERROR,
             );
@@ -140,36 +215,36 @@ export class BookController {
     }
 
     @Post('check-duplicates')
-async checkDuplicates(@Body() book: Partial<Book>) {
-    try {
-        const duplicates = await this.bookService.checkDuplicates(book);
-        return { duplicates };
-    } catch (error) {
-        throw new HttpException(
-            {
-                status: HttpStatus.INTERNAL_SERVER_ERROR,
-                error: 'Error occurred while checking for duplicates',
-            },
-            HttpStatus.INTERNAL_SERVER_ERROR,
-        );
+    async checkDuplicates(@Body() book: Partial<Book>) {
+        try {
+            const duplicates = await this.bookService.checkDuplicates(book);
+            return { duplicates };
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.INTERNAL_SERVER_ERROR,
+                    error: 'Error occurred while checking for duplicates',
+                },
+                HttpStatus.INTERNAL_SERVER_ERROR,
+            );
+        }
     }
-}
 
-@Get('recent')
-async getRecentBooks() {
-    try {
-        const recentBooks = await this.bookService.getRecentBooks();
-        return recentBooks;
-    } catch (error) {
-        throw new HttpException(
-            {
-                status: HttpStatus.INTERNAL_SERVER_ERROR,
-                error: 'Error occurred while fetching recent books',
-            },
-            HttpStatus.INTERNAL_SERVER_ERROR,
-        );
+    @Get('recent')
+    async getRecentBooks() {
+        try {
+            const recentBooks = await this.bookService.getRecentBooks();
+            return recentBooks;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.INTERNAL_SERVER_ERROR,
+                    error: 'Error occurred while fetching recent books',
+                },
+                HttpStatus.INTERNAL_SERVER_ERROR,
+            );
+        }
     }
-}
 
 
 }
