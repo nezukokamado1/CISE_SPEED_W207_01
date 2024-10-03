@@ -43,6 +43,15 @@ let BookService = class BookService {
     async findByTitle(title) {
         return await this.bookModel.find({ title: { $regex: title, $options: 'i' } }).exec();
     }
+    async findByAuthor(author) {
+        return await this.bookModel.find({ authors: { $regex: author, $options: 'i' } }).exec();
+    }
+    async findByJournal(journalName) {
+        return await this.bookModel.find({ journalName: { $regex: journalName, $options: 'i' } }).exec();
+    }
+    async findByYear(publicationYear) {
+        return await this.bookModel.find({ publicationYear: { $regex: publicationYear, $options: 'i' } }).exec();
+    }
     async rateBook(id, rating) {
         const book = await this.bookModel.findById(id);
         if (!book) {

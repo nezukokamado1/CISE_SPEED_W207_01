@@ -28,6 +28,15 @@ export class BookService {
     async findByTitle(title: string): Promise<Book[]> {
         return await this.bookModel.find({ title: { $regex: title, $options: 'i' } }).exec();
     }
+    async findByAuthor(author: string): Promise<Book[]> {
+        return await this.bookModel.find({ authors: { $regex: author, $options: 'i' } }).exec();
+    }
+    async findByJournal(journalName: string): Promise<Book[]> {
+        return await this.bookModel.find({ journalName: { $regex: journalName, $options: 'i' } }).exec();
+    }
+    async findByYear(publicationYear: string): Promise<Book[]> {
+        return await this.bookModel.find({ publicationYear: { $regex: publicationYear, $options: 'i' } }).exec();
+    }
 
     async rateBook(id: string, rating: number): Promise<{ averageRating: number }> {
         const book = await this.bookModel.findById(id);
