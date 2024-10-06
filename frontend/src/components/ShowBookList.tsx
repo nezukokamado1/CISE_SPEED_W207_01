@@ -68,14 +68,6 @@ function ShowBookList() {
     return (
         <div className='showBookList'>
             {showPopup ? (
-              <div className="popup-overlay">
-                <div className="popup-box">
-                  <h2>No Results for: {input}</h2>
-                  <div>
-                    <button className="btn btn-outline-success" onClick={closePopUp}>
-                      Return
-                    </button>
-                  </div>
                 <div className="popup-overlay">
                     <div className="popup-box">
                         <h2>No Results for: {input}</h2>
