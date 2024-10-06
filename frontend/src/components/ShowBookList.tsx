@@ -56,7 +56,7 @@ function ShowBookList() {
         <div className='showBookList'>
             <div className='container'>
                 <div className='header'>
-                    <h1 className='title'>Books List</h1>
+                    <h1 className='title'>SPEED</h1>
                     <div className='buttonGroup'>
                         <Link href='/submission-form' className='linkButton'>
                             Submission
