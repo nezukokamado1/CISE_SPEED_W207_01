@@ -4,10 +4,12 @@ import { useRouter } from 'next/navigation'; // Adjusted for the app directory
 import Link from 'next/link';
 
 const LogIn = () => {
+    // State variables for username and password
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const router = useRouter();
+    const router = useRouter(); // Hook for navigation
 
+    // Handle form submission
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
 
@@ -35,6 +37,7 @@ const LogIn = () => {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
+                    className="login-input" // Add a class for styling
                 />
                 <input
                     type="password"
@@ -42,6 +45,7 @@ const LogIn = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
+                    className="login-input" // Add a class for styling
                 />
                 <button type="submit" className="submit-button">Login</button>
             </form>
