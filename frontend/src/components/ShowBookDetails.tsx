@@ -79,8 +79,8 @@ function ShowBookDetails() {
                 Show Book List
             </Link>
             <div className="text-center mb-4">
-                <h1 className="text-3xl font-bold">Book's Record</h1>
-                <p className="lead">View Book's Info</p>
+                <h1 className="text-3xl font-bold">Book&apos;s Record</h1>
+                <p className="lead">View Book&apos;s Info</p>
                 <hr />
             </div>
 
