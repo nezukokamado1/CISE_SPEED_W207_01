@@ -7,7 +7,8 @@ import { Dropdown } from 'react-bootstrap';
 function ShowBookList() {
     const [books, setBooks] = useState<Book[]>([]);
     const [input, setInput] = useState('');
-    const [filter, setFilter] = useState('');
+    const [filter, setFilter] = useState('title');
+    const [showPopup, setShowPopup] = useState(false);
 
     // Handle input changes
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -24,6 +25,7 @@ function ShowBookList() {
         fetch(`http://localhost:8082/api/books/${filter}/${input}`)
             .then((res) => {
                 if (!res.ok) {
+                    setShowPopup(true);
                     fetchAllBooks();
                     throw new Error("Response empty");
                 }
@@ -35,6 +37,10 @@ function ShowBookList() {
             .catch((err) => {
                 console.log('Error from ShowBookList: ' + err);
             });
+    };
+
+    const closePopUp = () => {
+        setShowPopup(false);
     };
 
     // Fetch all books
@@ -54,6 +60,18 @@ function ShowBookList() {
 
     return (
         <div className='showBookList'>
+            {showPopup ? (
+              <div className="popup-overlay">
+                <div className="popup-box">
+                  <h2>No Results for: {input}</h2>
+                  <div>
+                    <button className="btn btn-outline-success" onClick={closePopUp}>
+                      Return
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : null }
             <div className='container'>
                 <div className='header'>
                     <h1 className='title'>SPEED</h1>
