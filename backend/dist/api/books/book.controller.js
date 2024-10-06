@@ -180,6 +180,9 @@ let BookController = class BookController {
             }, common_1.HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    async getVerifiedBooks() {
+        return this.bookService.getVerifiedBooks();
+    }
     async verifyBook(id) {
         return this.bookService.verifyBook(id);
     }
@@ -275,6 +278,12 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], BookController.prototype, "getRecentBooks", null);
+__decorate([
+    (0, common_1.Get)('verified'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], BookController.prototype, "getVerifiedBooks", null);
 __decorate([
     (0, common_1.Post)(':id/verify'),
     __param(0, (0, common_1.Param)('id')),

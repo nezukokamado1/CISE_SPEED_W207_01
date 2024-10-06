@@ -1,8 +1,8 @@
 'use client';
-import VerifiedBooksComponent from "@/components/VerifiedBooks";
+import VerifiedBooks from "@/components/VerifiedBooks";
 
 export default function VerifiedBooksPage() {
     return (
-        <VerifiedBooksComponent />
+        <VerifiedBooks />
     );
 }

@@ -95,8 +95,31 @@ body {
 }
 
 .linkButton {
+  padding: 5px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
   background-color: #ffc107;
   color: #000;
+}
+
+.linkButtons {
+  display: block; /* Make button take full width */
+  width: 100%; /* Ensure button width covers its container */
+  padding: 10px 15px; /* Add padding inside the button */
+  background-color: #ffc107; /* Button background color */
+  color: #000; /* Button text color */
+  text-align: center; /* Center text */
+  border-radius: 4px; /* Rounded corners */
+  font-weight: bold; /* Bold text */
+  text-decoration: none; /* Remove underline */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+.linkButton:hover {
+  background-color: #ffca28; /* Darker yellow on hover */
 }
 
 .toggleButton {
@@ -165,16 +188,7 @@ body {
   gap: 10px;
 }
 
-.linkButton {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  text-decoration: none;
-  background-color: #ffc107;
-  color: #000;
-}
+
 
 .searchForm {
   display: flex;
@@ -313,20 +327,24 @@ body {
     font-size: 24px; /* Larger font for heading */
 }
 
+/* Sidebar List Styles */
 .sidebar ul {
-    list-style-type: none; /* Remove default list styles */
-    padding: 0; /* Remove default padding */
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margins */
 }
 
 .sidebar li {
-    margin-bottom: 10px; /* Space between list items */
+  margin-bottom: 15px; /* Increase space between list items */
 }
 
-
 .logoutButton {
-    padding: 10px 15px; /* Padding for logout button */
-    color: #dc3545; /* Bootstrap danger color */
-    text-decoration: none; /* Remove underline */
+  padding: 10px 15px;
+  display: block; /* Ensure it fills container width */
+  text-align: center;
+  color: #dc3545; /* Red color for logout */
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .content {
@@ -372,6 +390,7 @@ body {
 .verifiedBooks {
   padding: 20px;
 }
+
 
 
 

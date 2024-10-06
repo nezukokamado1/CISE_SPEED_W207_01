@@ -84,6 +84,9 @@ let BookService = class BookService {
         await book.save();
         return { message: 'Book verified successfully' };
     }
+    async getVerifiedBooks() {
+        return this.bookModel.find({ verified: true }).exec();
+    }
 };
 exports.BookService = BookService;
 exports.BookService = BookService = __decorate([

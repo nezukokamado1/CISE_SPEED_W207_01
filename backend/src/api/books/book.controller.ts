@@ -35,6 +35,10 @@ export class BookController {
             );
         }
     }
+    @Get('verified')
+    async getVerifiedBooks() {
+      return this.bookService.getVerifiedBooks();
+    }
     // Get a book by title
     @Get('/title/:title')
     async findByTitle(@Param('title') title: string) {
@@ -135,6 +139,8 @@ export class BookController {
             );
         }
     }
+
+
     // Get one book via id
     @Get('/:id')
     async findOne(@Param('id') id: string) {
@@ -250,6 +256,14 @@ export class BookController {
     async verifyBook(@Param('id') id: string) {
       return this.bookService.verifyBook(id);
     }
+
+    
+    
+
+
+    
+   
+   
   
 
     
