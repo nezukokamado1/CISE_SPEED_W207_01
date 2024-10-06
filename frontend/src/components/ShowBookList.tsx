@@ -7,7 +7,7 @@ import { Dropdown } from 'react-bootstrap';
 function ShowBookList() {
     const [books, setBooks] = useState<Book[]>([]);
     const [input, setInput] = useState('');
-    const [filter, setFilter] = useState('');
+    const [filter, setFilter] = useState('title');
 
     // Handle input changes
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
