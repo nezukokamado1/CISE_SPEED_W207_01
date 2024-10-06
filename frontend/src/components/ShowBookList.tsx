@@ -9,6 +9,13 @@ function ShowBookList() {
     const [input, setInput] = useState('');
     const [filter, setFilter] = useState('title');
     const [showPopup, setShowPopup] = useState(false);
+    const methodologyLinks = [
+        { name: "Agile" },
+        { name: "Scrum" },
+        { name: "Waterfall" },
+        { name: "Lean" },
+        { name: "Kanban" },
+    ];
 
     // Handle input changes
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -69,12 +76,48 @@ function ShowBookList() {
                       Return
                     </button>
                   </div>
+                <div className="popup-overlay">
+                    <div className="popup-box">
+                        <h2>No Results for: {input}</h2>
+                        <div>
+                            <button className="btn btn-outline-success" onClick={closePopUp}>
+                                Return
+                            </button>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            ) : null }
+            ) : null}
             <div className='container'>
                 <div className='header'>
-                    <h1 className='title'>SPEED</h1>
+                    <div className="quick-links-header">
+                        <h1 className="header-title">SPEED |</h1>
+                        {methodologyLinks.map((link, index) => (
+                            <button
+                                key={index}
+                                className="quick-link"
+                                onClick={() => {
+                                    setInput(link.name);
+                                    fetch(`http://localhost:8082/api/books/title/${link.name}`)
+                                        .then((res) => {
+                                            if (!res.ok) {
+                                                setShowPopup(true);
+                                                fetchAllBooks();
+                                                throw new Error("Response empty");
+                                            }
+                                            return res.json();
+                                        })
+                                        .then((books) => {
+                                            setBooks(books);
+                                        })
+                                        .catch((err) => {
+                                            console.log('Error from QuickLinks: ' + err);
+                                        });
+                                }}
+                            >
+                                {link.name}
+                            </button>
+                        ))}
+                    </div>
                     <div className='buttonGroup'>
                         <Link href='/submission-form' className='linkButton'>
                             Submission
@@ -93,16 +136,16 @@ function ShowBookList() {
                         required
                         onChange={onChange}
                     />
-                        <select
-                            name="filter"
-                            value={filter}
-                            onChange={onFilter}
-                        >
-                            <option value="title">Title</option>
-                            <option value="authors">Author</option>
-                            <option value="journalName">Journal</option>
-                            <option value="publicationYear">Year</option>
-                        </select>
+                    <select
+                        name="filter"
+                        value={filter}
+                        onChange={onFilter}
+                    >
+                        <option value="title">Title</option>
+                        <option value="authors">Author</option>
+                        <option value="journalName">Journal</option>
+                        <option value="publicationYear">Year</option>
+                    </select>
                     <button className='searchButton' type='submit'>
                         Search
                     </button>

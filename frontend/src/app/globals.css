@@ -66,6 +66,7 @@ body {
   align-items: center;
   margin-top: 10px;
 }
+
 .submissionForm {
   max-width: 1200px;
   margin: 0 auto;
@@ -141,8 +142,6 @@ body {
   margin-top: 20px;
 }
 
-/* Existing styles... */
-
 .showBookList, .CreateBook {
   max-width: 1200px;
   margin: 0 auto;
@@ -206,10 +205,49 @@ body {
   color: #666;
 }
 
-/* Ensure this matches the style in SubmissionForm */
 .bookGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
 }
 
+.quick-link {
+  text-decoration: none;
+  font-weight: bold;
+  color: #ffffff;
+  position: relative;
+  font-size: 20px; 
+}
+
+.quick-links-header {
+  display: flex;
+  align-items: center; 
+  gap: 10px; 
+}
+
+.quick-link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #ffc107;
+  transition: width 0.3s;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+}
+
+.quick-link:hover::after {
+  width: 100%;
+}
+
+.quick-link:hover {
+  color: #ffc107;
+}
+
+.header-title {
+  font-size: 30px; 
+  font-weight: bold;
+  color: #ffffff; 
+  margin: 0; 
+}

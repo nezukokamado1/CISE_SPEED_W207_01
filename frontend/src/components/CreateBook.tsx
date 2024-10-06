@@ -45,7 +45,7 @@ const CreateBookComponent = () => {
       <div className="container">
         {/* Header */}
         <div className="header">
-          <h1 className="title">SPEED - Submission Form</h1>
+          <h1 className="header-title">SPEED - Submission Form</h1>
           <div className="buttonGroup">
             <Link href="/" className="linkButton">
               Home
