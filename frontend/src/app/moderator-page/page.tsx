@@ -2,7 +2,7 @@
 'use client';
 
 import SubmissionForm from '@/components/SubmissionForm';
-import Moderator from '@/components/Moderator'; // Ensure it's ModeratorLayout
+import Moderator from '@/components/Moderator';
 
 export default function SubmissionPage() {
     return (

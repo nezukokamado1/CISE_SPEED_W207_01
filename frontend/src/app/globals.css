@@ -95,8 +95,31 @@ body {
 }
 
 .linkButton {
+  padding: 5px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
   background-color: #ffc107;
   color: #000;
+}
+
+.linkButtons {
+  display: block; /* Make button take full width */
+  width: 100%; /* Ensure button width covers its container */
+  padding: 10px 15px; /* Add padding inside the button */
+  background-color: #ffc107; /* Button background color */
+  color: #000; /* Button text color */
+  text-align: center; /* Center text */
+  border-radius: 4px; /* Rounded corners */
+  font-weight: bold; /* Bold text */
+  text-decoration: none; /* Remove underline */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+.linkButton:hover {
+  background-color: #ffca28; /* Darker yellow on hover */
 }
 
 .toggleButton {
@@ -165,16 +188,7 @@ body {
   gap: 10px;
 }
 
-.linkButton {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  text-decoration: none;
-  background-color: #ffc107;
-  color: #000;
-}
+
 
 .searchForm {
   display: flex;
@@ -251,3 +265,134 @@ body {
   color: #ffffff; 
   margin: 0; 
 }
+
+/* Global Styles */
+.login-container {
+  max-width: 400px; /* Limit the width of the login container */
+  margin: 50px auto; /* Center the container */
+  padding: 20px; /* Padding for the container */
+  background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  text-align: center; /* Center text inside the container */
+}
+
+.login-form {
+  display: flex; /* Flexbox for alignment */
+  flex-direction: column; /* Stack inputs vertically */
+}
+
+.login-input {
+  padding: 10px; /* Padding inside input fields */
+  margin-bottom: 10px; /* Space between input fields */
+  border: 1px solid #ccc; /* Border for inputs */
+  border-radius: 4px; /* Rounded corners for inputs */
+}
+
+.submit-button {
+  padding: 10px; /* Padding for the submit button */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Rounded corners */
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white; /* Text color */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-weight: bold; /* Bold text */
+}
+
+.return-button {
+  margin-top: 20px; /* Space above return link */
+  color: #007bff; /* Link color */
+  text-decoration: none; /* Remove underline */
+}
+
+.return-button:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Global Styles for Moderator Layout */
+.moderator-portal {
+    display: flex; /* Use flexbox for layout */
+    height: 100vh; /* Full height for the layout */
+}
+
+.sidebar {
+    width: 250px; /* Fixed width for the sidebar */
+    background-color: #f8f9fa; /* Light background for sidebar */
+    padding: 20px; /* Padding inside sidebar */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.sidebar h2 {
+    margin-top: 0; /* Remove margin at the top */
+    font-size: 24px; /* Larger font for heading */
+}
+
+/* Sidebar List Styles */
+.sidebar ul {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margins */
+}
+
+.sidebar li {
+  margin-bottom: 15px; /* Increase space between list items */
+}
+
+.logoutButton {
+  padding: 10px 15px;
+  display: block; /* Ensure it fills container width */
+  text-align: center;
+  color: #dc3545; /* Red color for logout */
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.content {
+    flex-grow: 1; /* Take up remaining space */
+    padding: 20px; /* Padding for content area */
+    background-color: #ffffff; /* White background for content */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+/* Global Styles for Moderator Layout */
+.moderator-portal {
+  display: flex; /* Use flexbox for layout */
+  height: 100vh; /* Full height for the layout */
+}
+
+.sidebar {
+  width: 250px; /* Fixed width for the sidebar */
+  background-color: #f8f9fa; /* Light background for sidebar */
+  padding: 20px; /* Padding inside sidebar */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.sidebar h2 {
+  margin: 0 0 20px 0; /* Remove top margin, add bottom margin */
+  font-size: 24px; /* Larger font for heading */
+}
+
+.sidebar ul {
+  list-style-type: none; /* Remove default list styles */
+  padding: 0; /* Remove default padding */
+}
+
+.sidebar li {
+  margin-bottom: 10px; /* Space between list items */
+}
+
+.logoutButton {
+  padding: 10px 15px; /* Padding for logout button */
+  color: #dc3545; /* Bootstrap danger color */
+  text-decoration: none; /* Remove underline */
+}
+
+.verifiedBooks {
+  padding: 20px;
+}
+
+
+
+
+
+

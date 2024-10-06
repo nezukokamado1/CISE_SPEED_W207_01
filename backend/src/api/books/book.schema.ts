@@ -59,6 +59,9 @@ export class Book {
   @Prop({ type: Date, default: Date.now })
 createdAt: Date;
 
+@Prop({ default: false })
+  verified: boolean;
+
 
   
 

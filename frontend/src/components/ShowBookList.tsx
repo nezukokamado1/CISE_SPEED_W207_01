@@ -111,11 +111,11 @@ function ShowBookList() {
                         ))}
                     </div>
                     <div className='buttonGroup'>
-                        <Link href='/submission-form' className='linkButton'>
-                            Submission
-                        </Link>
                         <Link href='/create-book' className='linkButton'>
                             + Add New Book
+                        </Link>
+                        <Link href='/log-in' className='linkButton'>
+                            Login
                         </Link>
                     </div>
                 </div>
