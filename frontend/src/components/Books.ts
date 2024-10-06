@@ -14,6 +14,7 @@ export type Book = {
     institution?: string; // Optional
     updated_date?: Date;
     isDuplicate?: boolean;
+    verified?: boolean;
   };
   
   export const DefaultEmptyBook: Book = {

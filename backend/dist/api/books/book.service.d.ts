@@ -25,4 +25,5 @@ export declare class BookService {
     }>;
     checkDuplicates(book: Partial<Book>): Promise<Book[]>;
     getRecentBooks(): Promise<Book[]>;
+    verifyBook(id: string): Promise<any>;
 }

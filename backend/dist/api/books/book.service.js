@@ -75,6 +75,15 @@ let BookService = class BookService {
             .limit(10)
             .exec();
     }
+    async verifyBook(id) {
+        const book = await this.bookModel.findById(id);
+        if (!book) {
+            throw new common_1.NotFoundException('Book not found');
+        }
+        book.verified = true;
+        await book.save();
+        return { message: 'Book verified successfully' };
+    }
 };
 exports.BookService = BookService;
 exports.BookService = BookService = __decorate([

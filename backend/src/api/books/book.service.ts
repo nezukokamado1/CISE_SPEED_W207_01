@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Book } from './book.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -65,6 +65,20 @@ export class BookService {
           .limit(10)
           .exec();
       }
+
+      async verifyBook(id: string): Promise<any> {
+        const book = await this.bookModel.findById(id);
+        if (!book) {
+          throw new NotFoundException('Book not found');
+        }
+        book.verified = true;
+        await book.save();
+        return { message: 'Book verified successfully' };
+      }
+
+      
+
+      
 
     
 }

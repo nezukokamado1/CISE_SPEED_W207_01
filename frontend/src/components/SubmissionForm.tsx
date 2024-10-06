@@ -5,7 +5,7 @@ import BookCard from './BookCard';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-type SubmittedBook = Book & { isDuplicate?: boolean; _id: string };
+type SubmittedBook = Book & { isDuplicate?: boolean; _id: string; verified?: boolean };
 
 const SubmissionForm = () => {
     const [submittedBooks, setSubmittedBooks] = useState<SubmittedBook[]>([]);
@@ -17,7 +17,7 @@ const SubmissionForm = () => {
 
     useEffect(() => {
         fetchBooks();
-    }, []); // Removed showAllBooks dependency
+    }, []);
 
     useEffect(() => {
         filterBooks();
@@ -26,7 +26,7 @@ const SubmissionForm = () => {
     const fetchBooks = async () => {
         setIsLoading(true);
         try {
-            const endpoint = 'http://localhost:8082/api/books'; // Only fetch all books
+            const endpoint = 'http://localhost:8082/api/books';
             const response = await fetch(endpoint);
             if (!response.ok) {
                 throw new Error('Failed to fetch books');
@@ -52,7 +52,7 @@ const SubmissionForm = () => {
             const key = generateBookKey(book);
             const isDuplicate = uniqueKeys.has(key);
             uniqueKeys.add(key);
-            return { ...book, isDuplicate, _id: book._id as string };
+            return { ...book, isDuplicate, _id: book._id as string, verified: book.verified };
         });
     };
 
@@ -71,7 +71,7 @@ const SubmissionForm = () => {
             console.error('Cannot verify, ID is undefined');
             return;
         }
-
+    
         setIsLoading(true);
         try {
             const response = await fetch(`http://localhost:8082/api/books/${bookId}/verify`, {
@@ -80,20 +80,30 @@ const SubmissionForm = () => {
                     'Content-Type': 'application/json',
                 },
             });
-
+    
             if (!response.ok) {
-                const errorData = await response.json(); // Attempt to get error message from response
-                console.error('Error response:', errorData); // Log error response
-                throw new Error(errorData.message || 'Failed to verify book');
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Failed to verify book');
             }
+    
+            // Update the local state
+            setSubmittedBooks(prevBooks => 
+                prevBooks.map(book => 
+                    book._id === bookId ? { ...book, verified: true } : book
+                )
+            );
+            setFilteredBooks(prevBooks => 
+                prevBooks.map(book => 
+                    book._id === bookId ? { ...book, verified: true } : book
+                )
+            );
 
             alert('Book verified successfully');
-            navigate.push('/verifying-book'); // Navigate to the verifying books page
         } catch (error) {
             console.error('Error verifying book:', error);
-            alert('Failed to verify book. Please try again.');
+            setError(`Failed to verify book: ${error instanceof Error ? error.message : String(error)}`);
         } finally {
-            setIsLoading(false); // Set loading state to false
+            setIsLoading(false);
         }
     };
 
@@ -155,12 +165,16 @@ const SubmissionForm = () => {
                         </span>
                         <div className="actionButtons mt-2">
                             {!book.isDuplicate && (
-                                <button
-                                    className="btn btn-primary mr-2"
-                                    onClick={() => verifyBook(book._id)}
-                                >
-                                    Verify
-                                </button>
+                                book.verified ? (
+                                    <span className="text-green-600 font-bold bg-green-100 px-2 py-1 rounded">Verified</span>
+                                ) : (
+                                    <button
+                                        className="btn btn-primary mr-2"
+                                        onClick={() => verifyBook(book._id)}
+                                    >
+                                        Verify
+                                    </button>
+                                )
                             )}
                             {book.isDuplicate && (
                                 <button

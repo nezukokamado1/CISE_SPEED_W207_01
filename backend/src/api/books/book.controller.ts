@@ -246,5 +246,15 @@ export class BookController {
         }
     }
 
+    @Post(':id/verify')
+    async verifyBook(@Param('id') id: string) {
+      return this.bookService.verifyBook(id);
+    }
+  
+
+    
+
+    
+
 
 }

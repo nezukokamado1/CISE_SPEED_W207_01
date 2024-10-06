@@ -27,4 +27,5 @@ export declare class BookController {
         duplicates: Book[];
     }>;
     getRecentBooks(): Promise<Book[]>;
+    verifyBook(id: string): Promise<any>;
 }
