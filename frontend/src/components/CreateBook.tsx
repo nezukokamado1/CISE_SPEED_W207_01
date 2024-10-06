@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Book, DefaultEmptyBook } from "./Books";
 
-const researchTypes = ["Case Study", "Experiment", "Survey", "Literature Review", "Other"]; 
+const researchTypes = ["Case Study", "Experiment", "Survey", "Literature Review", "Other"];
 
 const CreateBookComponent = () => {
   const navigate = useRouter();
@@ -43,16 +43,20 @@ const CreateBookComponent = () => {
   return (
     <div className="CreateBook">
       <div className="container">
+        {/* Header */}
+        <div className="header">
+          <h1 className="header-title">SPEED - Submission Form</h1>
+          <div className="buttonGroup">
+            <Link href="/" className="linkButton">
+              Home
+            </Link>
+          </div>
+        </div>
         <div className="row">
           <div className="col-md-8 m-auto">
             <br />
-            <Link href="/" className="btn btn-outline-warning float-left">
-              Show Book List
-            </Link>
           </div>
           <div className="col-md-10 m-auto">
-            <h1 className="display-4 text-center">SPEED APP</h1>
-            <p className="lead text-center">Submit an Article!</p>
             {showPopup ? (
               <div className="popup-overlay">
                 <div className="popup-box">
@@ -69,6 +73,8 @@ const CreateBookComponent = () => {
               </div>
             ) : (
               <form noValidate onSubmit={onSubmit}>
+                <p style={{ textAlign: "center", fontSize: "16px", marginBottom: "20px" }}>
+                SPEED is excited to share your submission with the community! Kindly fill out the form below to get started.                </p>
                 <div className="form-group">
                   <input
                     type="text"
@@ -210,7 +216,11 @@ const CreateBookComponent = () => {
                   />
                 </div>
                 <br />
-                <button type="submit" className="btn btn-outline-warning btn-block mt-4 mb-4 w-100">
+                <button
+                  type="submit"
+                  className="linkButton"
+                  style={{ display: "block", margin: "20px auto" }}
+                >
                   Submit Book/Article
                 </button>
               </form>
@@ -223,5 +233,7 @@ const CreateBookComponent = () => {
 };
 
 export default CreateBookComponent;
+
+
 
 

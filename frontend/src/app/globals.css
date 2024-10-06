@@ -66,6 +66,7 @@ body {
   align-items: center;
   margin-top: 10px;
 }
+
 .submissionForm {
   max-width: 1200px;
   margin: 0 auto;
@@ -141,9 +142,7 @@ body {
   margin-top: 20px;
 }
 
-/* Existing styles... */
-
-.showBookList {
+.showBookList, .CreateBook {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -206,119 +205,49 @@ body {
   color: #666;
 }
 
-/* Ensure this matches the style in SubmissionForm */
 .bookGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
 }
 
-.login-container {
-  max-width: 400px;
-  margin: 100px auto; /* Centers the login box vertically and horizontally */
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff; /* Optional: white background for better visibility */
-}
-
-.login-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.login-form input {
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.submit-button {
-  padding: 10px;
-  background-color: #28a745; /* Green background */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.submit-button:hover {
-  background-color: #218838; /* Darker green on hover */
-}
-
-.return-button {
-  margin-top: 10px;
+.quick-link {
   text-decoration: none;
-  color: #0070f3; /* Blue color for return link */
   font-weight: bold;
-  text-align: center;
+  color: #ffffff;
+  position: relative;
+  font-size: 20px; 
 }
 
-.return-button:hover {
-  text-decoration: underline;
-}
-
-.moderator-portal {
+.quick-links-header {
   display: flex;
+  align-items: center; 
+  gap: 10px; 
 }
 
-.sidebar {
-  width: 200px;
-  padding: 20px;
-  background-color: #f4f4f4;
-  height: 100vh;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar h2 {
-  font-size: 20px;
-  margin-bottom: 20px;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar ul li {
-  margin-bottom: 10px;
-}
-
-.sidebar .linkButton {
-  width: 100%;
-  padding: 10px;
-  text-align: center;
+.quick-link::after {
+  content: "";
   display: block;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 4px;
-  text-decoration: none;
+  width: 0;
+  height: 2px;
+  background: #ffc107;
+  transition: width 0.3s;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
 }
 
-.sidebar .linkButton:hover {
-  background-color: #0056b3;
+.quick-link:hover::after {
+  width: 100%;
 }
 
-.submissionForm {
-  flex-grow: 1;
-  padding: 20px;
+.quick-link:hover {
+  color: #ffc107;
 }
 
-.logoutButton {
-  padding: 10px 15px;
-  background-color: #dc3545; /* Red color */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  text-align: center;
+.header-title {
+  font-size: 30px; 
   font-weight: bold;
-  text-decoration: none;
+  color: #ffffff; 
+  margin: 0; 
 }
-
-.logoutButton:hover {
-  background-color: #c82333; /* Darker red on hover */
-}
-
