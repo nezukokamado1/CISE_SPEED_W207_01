@@ -17,7 +17,7 @@ jobs:
 
 
    - name: Locate Directory
-     run: cd ./frontend
+     run: cd .\frontend\
 
    - name: Install dependeceies
      run: npm install
