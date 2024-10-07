@@ -17,6 +17,7 @@ jobs:
 
 
    - name: Install dependeceies
+     run: cd ./frontend
      run: npm install
 
 
