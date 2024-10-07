@@ -14,7 +14,7 @@ const VerifiedBooks = () => {
         setIsLoading(true);
         setError(null);
         try {
-            const response = await fetch('http://localhost:8082/api/books');
+            const response = await fetch(process.env.NEXT_PUBLIC_URL + 'api/books');
             if (!response.ok) {
                 throw new Error('Failed to fetch books');
             }

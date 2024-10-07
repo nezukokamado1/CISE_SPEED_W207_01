@@ -29,7 +29,7 @@ function ShowBookList() {
     // Handle search form submission
     const onSearch = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        fetch(`http://localhost:8082/api/books/${filter}/${input}`)
+        fetch(process.env.NEXT_PUBLIC_URL + `api/books/${filter}/${input}`)
             .then((res) => {
                 if (!res.ok) {
                     setShowPopup(true);
@@ -42,6 +42,7 @@ function ShowBookList() {
                 setBooks(books);
             })
             .catch((err) => {
+                console.log(process.env.NEXT_PUBLIC_URL + `api/books/${filter}/${input}`)
                 console.log('Error from ShowBookList: ' + err);
             });
     };
@@ -52,7 +53,7 @@ function ShowBookList() {
 
     // Fetch all books
     const fetchAllBooks = () => {
-        fetch('http://localhost:8082/api/books')
+        fetch(process.env.NEXT_PUBLIC_URL + 'api/books')
             .then((res) => res.json())
             .then((books) => setBooks(books))
             .catch((err) => {
@@ -89,7 +90,7 @@ function ShowBookList() {
                                 className="quick-link"
                                 onClick={() => {
                                     setInput(link.name);
-                                    fetch(`http://localhost:8082/api/books/title/${link.name}`)
+                                    fetch(process.env.NEXT_PUBLIC_URL + `api/books/title/${link.name}`)
                                         .then((res) => {
                                             if (!res.ok) {
                                                 setShowPopup(true);

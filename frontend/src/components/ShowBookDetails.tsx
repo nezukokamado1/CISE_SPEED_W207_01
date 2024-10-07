@@ -17,7 +17,7 @@ function ShowBookDetails() {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch(`http://localhost:8082/api/books/${id}`)
+        fetch(process.env.NEXT_PUBLIC_URL + `api/books/${id}`)
             .then((res) => res.json())
             .then((json) => {
                 setBook(json);
@@ -35,7 +35,7 @@ function ShowBookDetails() {
     const handleRating = async (newRating: number) => {
         setUserRating(newRating);
         try {
-            const response = await fetch(`http://localhost:8082/api/books/${id}/rate`, {
+            const response = await fetch(process.env.NEXT_PUBLIC_URL + `api/books/${id}/rate`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ function ShowBookDetails() {
     };
 
     const onDeleteClick = (id: string) => {
-        fetch(`http://localhost:8082/api/books/${id}`, { method: 'DELETE' })
+        fetch(process.env.NEXT_PUBLIC_URL + `api/books/${id}`, { method: 'DELETE' })
             .then(() => {
                 navigate.push('/');
             })

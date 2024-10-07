@@ -17,7 +17,7 @@ const CreateBookComponent = () => {
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(book);
-    fetch("http://localhost:8082/api/books", {
+    fetch(process.env.NEXT_PUBLIC_URL + "api/books", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(book),

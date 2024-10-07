@@ -26,7 +26,7 @@ const SubmissionForm = () => {
     const fetchBooks = async () => {
         setIsLoading(true);
         try {
-            const endpoint = 'http://localhost:8082/api/books';
+            const endpoint = process.env.NEXT_PUBLIC_URL + 'api/books';
             const response = await fetch(endpoint);
             if (!response.ok) {
                 throw new Error('Failed to fetch books');
@@ -74,7 +74,7 @@ const SubmissionForm = () => {
     
         setIsLoading(true);
         try {
-            const response = await fetch(`http://localhost:8082/api/books/${bookId}/verify`, {
+            const response = await fetch(process.env.NEXT_PUBLIC_URL + `api/books/${bookId}/verify`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -115,7 +115,7 @@ const SubmissionForm = () => {
 
         if (window.confirm('Are you sure you want to delete this book?')) {
             try {
-                const response = await fetch(`http://localhost:8082/api/books/${bookId}`, { method: 'DELETE' });
+                const response = await fetch(process.env.NEXT_PUBLIC_URL + `api/books/${bookId}`, { method: 'DELETE' });
                 if (!response.ok) {
                     throw new Error('Failed to delete book');
                 }
