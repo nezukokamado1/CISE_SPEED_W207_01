@@ -391,6 +391,45 @@ body {
   padding: 20px;
 }
 
+.card-container {
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 8px; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  padding: 15px;
+  background: #ffffff; 
+}
+
+.card-container:hover {
+  transform: translateY(-3px); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+}
+
+.desc {
+  text-align: center; 
+  padding: 10px; 
+}
+
+.book-title {
+  font-size: 20px; 
+  font-weight: bold; 
+  color: #333; 
+  margin-bottom: 4px; 
+}
+
+.book-author {
+  font-size: 16px; 
+  color: #555; 
+}
+
+.book-image {
+  width: 400px; 
+  height: 200px; 
+  object-fit: cover; 
+  border-radius: 8px; 
+}
+
+
 
 
 

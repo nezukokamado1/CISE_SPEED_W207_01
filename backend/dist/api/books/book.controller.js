@@ -35,6 +35,9 @@ let BookController = class BookController {
             }, common_1.HttpStatus.NOT_FOUND, { cause: console_1.error });
         }
     }
+    async getVerifiedBooks() {
+        return this.bookService.getVerifiedBooks();
+    }
     async findByTitle(title) {
         try {
             const books = await this.bookService.findByTitle(title);
@@ -180,9 +183,6 @@ let BookController = class BookController {
             }, common_1.HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    async getVerifiedBooks() {
-        return this.bookService.getVerifiedBooks();
-    }
     async verifyBook(id) {
         return this.bookService.verifyBook(id);
     }
@@ -200,6 +200,12 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], BookController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)('verified'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], BookController.prototype, "getVerifiedBooks", null);
 __decorate([
     (0, common_1.Get)('/title/:title'),
     __param(0, (0, common_1.Param)('title')),
@@ -278,12 +284,6 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], BookController.prototype, "getRecentBooks", null);
-__decorate([
-    (0, common_1.Get)('verified'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Promise)
-], BookController.prototype, "getVerifiedBooks", null);
 __decorate([
     (0, common_1.Post)(':id/verify'),
     __param(0, (0, common_1.Param)('id')),

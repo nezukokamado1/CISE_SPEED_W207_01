@@ -115,7 +115,7 @@ function ShowBookList() {
                             + Add New Book
                         </Link>
                         <Link href='/log-in' className='linkButton'>
-                            Login
+                            Admin Login
                         </Link>
                     </div>
                 </div>

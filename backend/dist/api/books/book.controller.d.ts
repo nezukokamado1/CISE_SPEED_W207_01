@@ -6,6 +6,7 @@ export declare class BookController {
     constructor(bookService: BookService);
     test(): string;
     findAll(): Promise<Book[]>;
+    getVerifiedBooks(): Promise<Book[]>;
     findByTitle(title: string): Promise<Book[]>;
     findByAuthor(author: string): Promise<Book[]>;
     findByJournal(journal: string): Promise<Book[]>;
@@ -27,6 +28,5 @@ export declare class BookController {
         duplicates: Book[];
     }>;
     getRecentBooks(): Promise<Book[]>;
-    getVerifiedBooks(): Promise<Book[]>;
     verifyBook(id: string): Promise<any>;
 }
