@@ -16,8 +16,10 @@ jobs:
    - uses: actions/checkout@v4
 
 
-   - name: Install dependeceies
+   - name: Locate Directory
      run: cd ./frontend
+
+   - name: Install dependeceies
      run: npm install
 
 
