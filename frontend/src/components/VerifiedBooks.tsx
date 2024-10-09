@@ -39,7 +39,7 @@ const VerifiedBooks = () => {
                 <Link href="/moderator-page" className="linkButton">
                     Moderator Dashboard
                 </Link>
-                <h1 className="text-3xl font-bold">Verified Books</h1>
+                <h1 className="text-3xl font-bold">Verified Articles</h1>
                 <button onClick={fetchVerifiedBooks} className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">
                     Refresh
                 </button>

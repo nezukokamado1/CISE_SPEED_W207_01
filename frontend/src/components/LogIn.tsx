@@ -49,7 +49,7 @@ const LogIn = () => {
                 />
                 <button type="submit" className="submit-button">Login</button>
             </form>
-            <Link href="/" className="return-button">Return to Show Book List</Link>
+            <Link href="/" className="return-button">Return to Article Lists</Link>
         </div>
     );
 };

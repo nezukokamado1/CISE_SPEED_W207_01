@@ -132,7 +132,7 @@ const SubmissionForm = () => {
         <div className="submissionForm">
             {isLoading && <div className="loading">Loading...</div>}
             <div className="header mb-4">
-                <h1 className="title text-3xl">All Submitted Books</h1>
+                <h1 className="title text-3xl">All Submitted Articles</h1>
             </div>
 
             <div className="filterDropdown mb-4">
@@ -143,7 +143,7 @@ const SubmissionForm = () => {
                     onChange={(e) => setFilter(e.target.value as 'all' | 'duplicates' | 'unique')}
                     className="form-select"
                 >
-                    <option value="all">All Books</option>
+                    <option value="all">All Articles</option>
                     <option value="duplicates">Duplicates</option>
                     <option value="unique">Unique</option>
                 </select>

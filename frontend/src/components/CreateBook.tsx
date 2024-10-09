@@ -221,7 +221,7 @@ const CreateBookComponent = () => {
                   className="linkButton"
                   style={{ display: "block", margin: "20px auto" }}
                 >
-                  Submit Book/Article
+                  Submit Article
                 </button>
               </form>
             )}

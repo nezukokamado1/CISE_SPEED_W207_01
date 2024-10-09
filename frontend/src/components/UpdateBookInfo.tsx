@@ -51,12 +51,12 @@ function UpdateBookInfo() {
                     <div className="col-md-8 m-auto">
                         <br />
                         <Link href="/" className="btn btn-outline-warning float-left">
-                            Show Book List
+                            Show Article List
                         </Link>
                     </div>
                     <div className="col-md-8 m-auto">
-                        <h1 className="display-4 text-center">Edit Book</h1>
-                        <p className="lead text-center">Update Book&apos;s Info</p>
+                        <h1 className="display-4 text-center">Edit Article</h1>
+                        <p className="lead text-center">Update Article&apos;s Info</p>
                     </div>
                 </div>
                 <div className="col-md-8 m-auto">
@@ -192,7 +192,7 @@ function UpdateBookInfo() {
                         </div>
                         <br />
                         <button type="submit" className="btn btn-outline-info btn-lg btn-block">
-                            Update Book
+                            Update Article
                         </button>
                     </form>
                 </div>
