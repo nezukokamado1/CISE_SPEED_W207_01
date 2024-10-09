@@ -76,11 +76,11 @@ function ShowBookDetails() {
     return (
         <div className="container mx-auto p-4">
             <Link href="/" className="linkButton">
-                Show Book List
+                Return
             </Link>
             <div className="text-center mb-4">
-                <h1 className="text-3xl font-bold">Book&apos;s Record</h1>
-                <p className="lead">View Book&apos;s Info</p>
+                <h1 className="text-3xl font-bold">Article&apos;s Record</h1>
+                <p className="lead">View Article&apos;s Info</p>
                 <hr />
             </div>
 
@@ -143,7 +143,7 @@ function ShowBookDetails() {
             {/* Edit and Delete Buttons Section */}
             <div className="flex justify-center mb-4">
                 <Link href={`/edit-book/${book._id}`} className="btn btn-outline-info btn-lg mr-4">
-                    Edit Book
+                    Edit Article
                 </Link>
                 <button
                     type="button"
@@ -152,13 +152,13 @@ function ShowBookDetails() {
                         onDeleteClick(book._id || '');
                     }}
                 >
-                    Delete Book
+                    Delete Article
                 </button>
             </div>
 
             {/* Rating Component Section */}
             <div className="mb-4">
-                <h3 className="text-center text-2xl mb-3">Rate this Book</h3>
+                <h3 className="text-center text-2xl mb-3">Rate this Article</h3>
                 <div className="flex justify-center">
                     <StarRating
                         value={userRating || 0}

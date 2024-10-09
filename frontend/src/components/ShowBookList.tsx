@@ -113,7 +113,7 @@ function ShowBookList() {
                     </div>
                     <div className='buttonGroup'>
                         <Link href='/create-book' className='linkButton'>
-                            + Add New Book
+                            + Add New Article
                         </Link>
                         <Link href='/log-in' className='linkButton'>
                             Admin Login
@@ -123,7 +123,7 @@ function ShowBookList() {
                 <form className='searchForm' noValidate onSubmit={onSearch}>
                     <input
                         type="text"
-                        placeholder="Book Title"
+                        placeholder="Article Title"
                         name="title"
                         className='searchInput'
                         required
@@ -145,7 +145,7 @@ function ShowBookList() {
                 </form>
                 <div className='bookGrid'>
                     {books.length === 0 ? (
-                        <p className="no-books">There are no book records!</p>
+                        <p className="no-books">There are no article records!</p>
                     ) : (
                         books.map((book, k) => <BookCard book={book} key={k} />)
                     )}

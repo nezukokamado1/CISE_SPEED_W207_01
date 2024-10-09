@@ -9,8 +9,8 @@ const ModeratorLayout = ({ children }: { children: React.ReactNode }) => {
                 <ul>
                     <li><Link href="/submission-form" className="linkButtons">Submission</Link></li>
                     <li><Link href="/verifying-book" className="linkButtons">Verified Articles</Link></li>
-                    <li><button className="linkButtons">Analyst</button></li>
-                    <li><button className="linkButtons">Notifications</button></li>
+                    {/* <li><button className="linkButtons">Analyst</button></li>
+                    <li><button className="linkButtons">Notifications</button></li> */}
                     <Link href="/" className="logoutButton">Logout</Link>
                 </ul>
             </div>
