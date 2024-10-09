@@ -17,4 +17,14 @@ export declare class BookService {
         _id: import("mongoose").Types.ObjectId;
     }>;
     findByTitle(title: string): Promise<Book[]>;
+    findByAuthor(author: string): Promise<Book[]>;
+    findByJournal(journalName: string): Promise<Book[]>;
+    findByYear(publicationYear: string): Promise<Book[]>;
+    rateBook(id: string, rating: number): Promise<{
+        averageRating: number;
+    }>;
+    checkDuplicates(book: Partial<Book>): Promise<Book[]>;
+    getRecentBooks(): Promise<Book[]>;
+    verifyBook(id: string): Promise<any>;
+    getVerifiedBooks(): Promise<Book[]>;
 }

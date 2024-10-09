@@ -3,9 +3,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Book, DefaultEmptyBook } from "./Books";
 
-<<<<<<< Updated upstream
-const researchTypes = ["Case Study", "Experiment", "Survey", "Literature Review", "Other"]; 
-=======
 const researchTypes = ["Case Study", "Experiment", "Survey", "Literature Review", "Other"];
 const images = [
   "https://th-thumbnailer.cdn-si-edu.com/sWf0xF1il7OWYO8j-PGqwBvxTAE=/1000x750/filters:no_upscale():focal(2550x1724:2551x1725)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/9a/d7/9ad71c28-a69d-4bc0-b03d-37160317bb32/gettyimages-577674005.jpg",
@@ -17,7 +14,6 @@ const images = [
 const getRandomImage = () => {
   return images[Math.floor(Math.random() * images.length)];
 };
->>>>>>> Stashed changes
 
 const CreateBookComponent = () => {
   const navigate = useRouter();
@@ -30,14 +26,9 @@ const CreateBookComponent = () => {
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-<<<<<<< Updated upstream
-    console.log(book);
-    fetch("http://localhost:8082/api/books", {
-=======
     const newBook = { ...book, imageCover: getRandomImage() }; // Assign a random image
     console.log(newBook);
     fetch(process.env.NEXT_PUBLIC_URL + "api/books", {
->>>>>>> Stashed changes
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newBook),
@@ -63,16 +54,20 @@ const CreateBookComponent = () => {
   return (
     <div className="CreateBook">
       <div className="container">
+        {/* Header */}
+        <div className="header">
+          <h1 className="header-title">SPEED - Submission Form</h1>
+          <div className="buttonGroup">
+            <Link href="/" className="linkButton">
+              Home
+            </Link>
+          </div>
+        </div>
         <div className="row">
           <div className="col-md-8 m-auto">
             <br />
-            <Link href="/" className="btn btn-outline-warning float-left">
-              Show Book List
-            </Link>
           </div>
           <div className="col-md-10 m-auto">
-            <h1 className="display-4 text-center">SPEED APP</h1>
-            <p className="lead text-center">Submit an Article!</p>
             {showPopup ? (
               <div className="popup-overlay">
                 <div className="popup-box">
@@ -89,6 +84,8 @@ const CreateBookComponent = () => {
               </div>
             ) : (
               <form noValidate onSubmit={onSubmit}>
+                <p style={{ textAlign: "center", fontSize: "16px", marginBottom: "20px" }}>
+                SPEED is excited to share your submission with the community! Kindly fill out the form below to get started.                </p>
                 <div className="form-group">
                   <input
                     type="text"
@@ -230,8 +227,12 @@ const CreateBookComponent = () => {
                   />
                 </div>
                 <br />
-                <button type="submit" className="btn btn-outline-warning btn-block mt-4 mb-4 w-100">
-                  Submit Book/Article
+                <button
+                  type="submit"
+                  className="linkButton"
+                  style={{ display: "block", margin: "20px auto" }}
+                >
+                  Submit Article
                 </button>
               </form>
             )}
@@ -243,5 +244,7 @@ const CreateBookComponent = () => {
 };
 
 export default CreateBookComponent;
+
+
 
 

@@ -20,18 +20,13 @@ const BookCard = ({ book }: IProp) => {
     return (
         <div className="card-container" onClick={onClick}>
             <img
-<<<<<<< Updated upstream
-                src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d"
-=======
                 src={book.imageCover || "https://images.unsplash.com/photo-1495446815901-a7297e633e8d"} 
->>>>>>> Stashed changes
                 alt="Books"
-                height={200}
+                className="book-image"
             />
             <div className="desc">
-                <h2>{book.title}</h2>
-                <h3>{book.authors}</h3> 
-                <p>{book.journalName}</p> 
+                <h2 className="book-title">{book.title}</h2>
+                <h3 className="book-author">By: {book.authors}</h3>
             </div>
         </div>
     );

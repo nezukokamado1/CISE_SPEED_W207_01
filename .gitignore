@@ -5,6 +5,8 @@ frontend/node_modules
 frontend/.next
 /build
 
+backend/.vercel
+
 # Logs
 logs
 *.log
@@ -56,3 +58,4 @@ pids
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+.vercel

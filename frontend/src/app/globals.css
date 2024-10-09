@@ -59,3 +59,379 @@ body {
 .popup-box button {
   margin: 10px;
 }
+
+.rating-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.submissionForm {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 24px;
+  margin: 0;
+}
+
+.linkButton, .toggleButton {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.linkButton {
+  padding: 5px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: #ffc107;
+  color: #000;
+}
+
+.linkButtons {
+  display: block; /* Make button take full width */
+  width: 100%; /* Ensure button width covers its container */
+  padding: 10px 15px; /* Add padding inside the button */
+  background-color: #ffc107; /* Button background color */
+  color: #000; /* Button text color */
+  text-align: center; /* Center text */
+  border-radius: 4px; /* Rounded corners */
+  font-weight: bold; /* Bold text */
+  text-decoration: none; /* Remove underline */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+.linkButton:hover {
+  background-color: #ffca28; /* Darker yellow on hover */
+}
+
+.toggleButton {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.bookGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.bookEntry {
+  position: relative;
+}
+
+.duplicateIndicator, .uniqueIndicator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.duplicateIndicator {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.uniqueIndicator {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.error {
+  color: #dc3545;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+.showBookList, .CreateBook {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 24px;
+  margin: 0;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 10px;
+}
+
+
+
+.searchForm {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.searchInput {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.searchButton {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.no-books {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+}
+
+.bookGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.quick-link {
+  text-decoration: none;
+  font-weight: bold;
+  color: #ffffff;
+  position: relative;
+  font-size: 20px; 
+}
+
+.quick-links-header {
+  display: flex;
+  align-items: center; 
+  gap: 10px; 
+}
+
+.quick-link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #ffc107;
+  transition: width 0.3s;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+}
+
+.quick-link:hover::after {
+  width: 100%;
+}
+
+.quick-link:hover {
+  color: #ffc107;
+}
+
+.header-title {
+  font-size: 30px; 
+  font-weight: bold;
+  color: #ffffff; 
+  margin: 0; 
+}
+
+/* Global Styles */
+.login-container {
+  max-width: 400px; /* Limit the width of the login container */
+  margin: 50px auto; /* Center the container */
+  padding: 20px; /* Padding for the container */
+  background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  text-align: center; /* Center text inside the container */
+}
+
+.login-form {
+  display: flex; /* Flexbox for alignment */
+  flex-direction: column; /* Stack inputs vertically */
+}
+
+.login-input {
+  padding: 10px; /* Padding inside input fields */
+  margin-bottom: 10px; /* Space between input fields */
+  border: 1px solid #ccc; /* Border for inputs */
+  border-radius: 4px; /* Rounded corners for inputs */
+}
+
+.submit-button {
+  padding: 10px; /* Padding for the submit button */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Rounded corners */
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white; /* Text color */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-weight: bold; /* Bold text */
+}
+
+.return-button {
+  margin-top: 20px; /* Space above return link */
+  color: #007bff; /* Link color */
+  text-decoration: none; /* Remove underline */
+}
+
+.return-button:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Global Styles for Moderator Layout */
+.moderator-portal {
+    display: flex; /* Use flexbox for layout */
+    height: 100vh; /* Full height for the layout */
+}
+
+.sidebar {
+    width: 250px; /* Fixed width for the sidebar */
+    background-color: #f8f9fa; /* Light background for sidebar */
+    padding: 20px; /* Padding inside sidebar */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.sidebar h2 {
+    margin-top: 0; /* Remove margin at the top */
+    font-size: 24px; /* Larger font for heading */
+}
+
+/* Sidebar List Styles */
+.sidebar ul {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margins */
+}
+
+.sidebar li {
+  margin-bottom: 15px; /* Increase space between list items */
+}
+
+.logoutButton {
+  padding: 10px 15px;
+  display: block; /* Ensure it fills container width */
+  text-align: center;
+  color: #dc3545; /* Red color for logout */
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.content {
+    flex-grow: 1; /* Take up remaining space */
+    padding: 20px; /* Padding for content area */
+    background-color: #ffffff; /* White background for content */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+/* Global Styles for Moderator Layout */
+.moderator-portal {
+  display: flex; /* Use flexbox for layout */
+  height: 100vh; /* Full height for the layout */
+}
+
+.sidebar {
+  width: 250px; /* Fixed width for the sidebar */
+  background-color: #f8f9fa; /* Light background for sidebar */
+  padding: 20px; /* Padding inside sidebar */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.sidebar h2 {
+  margin: 0 0 20px 0; /* Remove top margin, add bottom margin */
+  font-size: 24px; /* Larger font for heading */
+}
+
+.sidebar ul {
+  list-style-type: none; /* Remove default list styles */
+  padding: 0; /* Remove default padding */
+}
+
+.sidebar li {
+  margin-bottom: 10px; /* Space between list items */
+}
+
+.logoutButton {
+  padding: 10px 15px; /* Padding for logout button */
+  color: #dc3545; /* Bootstrap danger color */
+  text-decoration: none; /* Remove underline */
+}
+
+.verifiedBooks {
+  padding: 20px;
+}
+
+.card-container {
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 8px; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  padding: 15px;
+  background: #ffffff; 
+}
+
+.card-container:hover {
+  transform: translateY(-3px); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+}
+
+.desc {
+  text-align: center; 
+  padding: 10px; 
+}
+
+.book-title {
+  font-size: 20px; 
+  font-weight: bold; 
+  color: #333; 
+  margin-bottom: 4px; 
+}
+
+.book-author {
+  font-size: 16px; 
+  color: #555; 
+}
+
+.book-image {
+  width: 400px; 
+  height: 200px; 
+  object-fit: cover; 
+  border-radius: 8px; 
+}
+
+
+
+
+
+
+

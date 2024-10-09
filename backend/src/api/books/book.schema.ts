@@ -49,6 +49,22 @@ export class Book {
 
     @Prop({ type: Date, default: Date.now })
     updated_date: Date;
+
+  @Prop({ type: [Number], default: [] })
+  ratings: number[];
+
+  @Prop({ type: Number, default: 0 })
+  averageRating: number;
+
+  @Prop({ type: Date, default: Date.now })
+createdAt: Date;
+
+@Prop({ default: false })
+  verified: boolean;
+
+
+  
+
 }
 
 export const BookSchema = SchemaFactory.createForClass(Book);

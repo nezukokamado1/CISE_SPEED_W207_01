@@ -43,6 +43,50 @@ let BookService = class BookService {
     async findByTitle(title) {
         return await this.bookModel.find({ title: { $regex: title, $options: 'i' } }).exec();
     }
+    async findByAuthor(author) {
+        return await this.bookModel.find({ authors: { $regex: author, $options: 'i' } }).exec();
+    }
+    async findByJournal(journalName) {
+        return await this.bookModel.find({ journalName: { $regex: journalName, $options: 'i' } }).exec();
+    }
+    async findByYear(publicationYear) {
+        return await this.bookModel.find({ publicationYear: { $regex: publicationYear, $options: 'i' } }).exec();
+    }
+    async rateBook(id, rating) {
+        const book = await this.bookModel.findById(id);
+        if (!book) {
+            throw new Error('Book not found');
+        }
+        book.ratings.push(rating);
+        book.averageRating = book.ratings.reduce((sum, r) => sum + r, 0) / book.ratings.length;
+        await book.save();
+        return { averageRating: book.averageRating };
+    }
+    async checkDuplicates(book) {
+        return this.bookModel.find({
+            title: { $regex: new RegExp(book.title, 'i') },
+            authors: { $regex: new RegExp(book.authors, 'i') },
+            journalName: { $regex: new RegExp(book.journalName, 'i') }
+        }).exec();
+    }
+    async getRecentBooks() {
+        return this.bookModel.find()
+            .sort({ createdAt: -1 })
+            .limit(10)
+            .exec();
+    }
+    async verifyBook(id) {
+        const book = await this.bookModel.findById(id);
+        if (!book) {
+            throw new common_1.NotFoundException('Book not found');
+        }
+        book.verified = true;
+        await book.save();
+        return { message: 'Book verified successfully' };
+    }
+    async getVerifiedBooks() {
+        return this.bookModel.find({ verified: true }).exec();
+    }
 };
 exports.BookService = BookService;
 exports.BookService = BookService = __decorate([
