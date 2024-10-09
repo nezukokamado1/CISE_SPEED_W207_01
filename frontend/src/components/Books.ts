@@ -15,6 +15,7 @@ export type Book = {
     updated_date?: Date;
     isDuplicate?: boolean;
     verified?: boolean;
+    imageCover?: string; 
   };
   
   export const DefaultEmptyBook: Book = {
@@ -32,5 +33,6 @@ export type Book = {
     abstract: '',
     institution: '',
     updated_date: undefined,
+    imageCover: '', 
   };
   
