@@ -101,4 +101,14 @@ export class BookService {
         await book.save();
         return book;
     }
+
+    // Step 1: Add the extractDetails Function
+    async extractDetails(id: string): Promise<Book> {
+        const book = await this.bookModel.findById(id);
+        if (!book) {
+            throw new NotFoundException('Book not found');
+        }
+        // This function returns the details of the book, which you can use in the frontend
+        return book;
+    }
 }

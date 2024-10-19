@@ -87,6 +87,23 @@ let BookService = class BookService {
     async getVerifiedBooks() {
         return this.bookModel.find({ verified: true }).exec();
     }
+    async markDetailsAsExtracted(id, extractedDetails) {
+        const book = await this.bookModel.findById(id);
+        if (!book) {
+            throw new common_1.NotFoundException('Book not found');
+        }
+        book.detailsExtracted = true;
+        Object.assign(book, extractedDetails);
+        await book.save();
+        return book;
+    }
+    async extractDetails(id) {
+        const book = await this.bookModel.findById(id);
+        if (!book) {
+            throw new common_1.NotFoundException('Book not found');
+        }
+        return book;
+    }
 };
 exports.BookService = BookService;
 exports.BookService = BookService = __decorate([
