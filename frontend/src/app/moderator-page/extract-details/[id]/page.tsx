@@ -1,3 +1,5 @@
+// Updated extract-details/[id]/page.tsx
+
 'use client';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -13,10 +15,16 @@ export default function ExtractDetailsPage() {
     institution: '',
   });
 
+  const baseUrl = process.env.NEXT_PUBLIC_URL;
+
+  if (!baseUrl) {
+    console.error('Error: NEXT_PUBLIC_URL environment variable is not defined');
+  }
+
   useEffect(() => {
     if (id) {
       axios
-        .get(`${process.env.NEXT_PUBLIC_URL}/api/books/${id}`)
+        .get(`${baseUrl}/api/books/${id}`)
         .then((response) => {
           setBook(response.data);
           setExtractedDetails({
@@ -33,7 +41,7 @@ export default function ExtractDetailsPage() {
 
   const handleSave = () => {
     axios
-      .put(`${process.env.NEXT_PUBLIC_URL}/api/books/${id}/extract-details`, extractedDetails)
+      .put(`${baseUrl}/api/books/${id}/extract-details`, extractedDetails)
       .then((response) => {
         alert('Details extracted successfully!');
         router.push('/moderator-page');
