@@ -1,10 +1,9 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'standalone',
-    experimental: {
-      outputFileTracingRoot: __dirname,
-    },
-    reactStrictMode: true,
-  };
-  
-  module.exports = nextConfig;  
+  output: 'standalone',
+  reactStrictMode: true,
+  // experimental: {
+  //   outputFileTracingRoot: __dirname,
+  // },
+};
+
+module.exports = nextConfig;
