@@ -10,15 +10,10 @@ export default function ModeratorPage() {
   const [filter, setFilter] = useState('All Articles');
   const [sortBy, setSortBy] = useState('');
 
-  const baseUrl = process.env.NEXT_PUBLIC_URL;
-
-  if (!baseUrl) {
-    console.error('Error: NEXT_PUBLIC_URL environment variable is not defined');
-  }
-
   useEffect(() => {
+    // Updated axios call to ensure filters are applied correctly
     axios
-      .get(`${baseUrl}/api/books`, {
+      .get(`${process.env.NEXT_PUBLIC_URL}/api/books`, {
         params: { filter, sortBy },
       })
       .then((response) => {
@@ -29,15 +24,21 @@ export default function ModeratorPage() {
       });
   }, [filter, sortBy]);
 
-  const filteredBooks = filter === 'All Articles'
-    ? allBooks
-    : filter === 'Duplicates'
-    ? allBooks.filter((book) => book.duplicate)
-    : filter === 'Unique'
-    ? allBooks.filter((book) => !book.duplicate)
-    : filter === 'Needs Extraction'
-    ? allBooks.filter((book) => !book.detailsExtracted)
-    : allBooks;
+  const filteredBooks = allBooks.filter((book) => {
+    if (filter === 'All Articles') return true;
+    if (filter === 'Duplicates') return book.duplicate;
+    if (filter === 'Unique') return !book.duplicate;
+    if (filter === 'Needs Extraction') return !book.detailsExtracted;
+    return true;
+  });
+
+  const sortedBooks = [...filteredBooks].sort((a, b) => {
+    if (!sortBy) return 0; // No sorting applied if "None" is selected
+    if (sortBy === 'title') return a.title.localeCompare(b.title);
+    if (sortBy === 'authors') return a.authors.localeCompare(b.authors);
+    if (sortBy === 'publicationYear') return a.publicationYear - b.publicationYear;
+    return 0;
+  });
 
   return (
     <div>
@@ -69,8 +70,8 @@ export default function ModeratorPage() {
           </tr>
         </thead>
         <tbody>
-          {filteredBooks.length > 0 ? (
-            filteredBooks.map((book) => (
+          {sortedBooks.length > 0 ? (
+            sortedBooks.map((book) => (
               <tr key={book._id}>
                 <td>{book.title}</td>
                 <td>{book.authors}</td>
