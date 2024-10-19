@@ -15,8 +15,9 @@ export default function ExtractDetailsPage() {
 
   useEffect(() => {
     if (id) {
-      axios.get(`${process.env.NEXT_PUBLIC_URL}/api/books/${id}`)
-        .then(response => {
+      axios
+        .get(`${process.env.NEXT_PUBLIC_URL}/api/books/${id}`)
+        .then((response) => {
           setBook(response.data);
           setExtractedDetails({
             keywords: response.data.keywords || '',
@@ -24,20 +25,21 @@ export default function ExtractDetailsPage() {
             institution: response.data.institution || '',
           });
         })
-        .catch(error => {
-          console.error("Error fetching book details:", error);
+        .catch((error) => {
+          console.error('Error fetching book details:', error);
         });
     }
   }, [id]);
 
   const handleSave = () => {
-    axios.put(`${process.env.NEXT_PUBLIC_URL}/api/books/${id}/extract-details`, extractedDetails)
-      .then(response => {
+    axios
+      .put(`${process.env.NEXT_PUBLIC_URL}/api/books/${id}/extract-details`, extractedDetails)
+      .then((response) => {
         alert('Details extracted successfully!');
         router.push('/moderator-page');
       })
-      .catch(error => {
-        console.error("Error saving extracted details:", error);
+      .catch((error) => {
+        console.error('Error saving extracted details:', error);
         alert('Failed to extract details');
       });
   };
