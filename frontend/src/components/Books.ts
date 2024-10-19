@@ -35,4 +35,3 @@ export type Book = {
     updated_date: undefined,
     imageCover: '', 
   };
-  

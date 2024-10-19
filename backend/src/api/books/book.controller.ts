@@ -256,19 +256,4 @@ export class BookController {
     async verifyBook(@Param('id') id: string) {
       return this.bookService.verifyBook(id);
     }
-
-    
-    
-
-
-    
-   
-   
-  
-
-    
-
-    
-
-
 }

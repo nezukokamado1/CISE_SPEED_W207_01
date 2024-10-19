@@ -79,22 +79,4 @@ export class BookService {
       async getVerifiedBooks(): Promise<Book[]> {
         return this.bookModel.find({ verified: true }).exec();
     }
-
-      
-
-      
-
-    
 }
-
-
-    
-    
-
-
-
-
-    
-    
-
-
