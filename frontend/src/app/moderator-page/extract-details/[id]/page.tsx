@@ -1,4 +1,4 @@
-// Updated extract-details/[id]/page.tsx
+// frontend/src/app/moderator-page/extract-details/[id]/page.tsx
 
 'use client';
 import React, { useState, useEffect } from 'react';

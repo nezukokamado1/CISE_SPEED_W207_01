@@ -10,9 +10,15 @@ export default function ModeratorPage() {
   const [filter, setFilter] = useState('All Articles');
   const [sortBy, setSortBy] = useState('');
 
+  const baseUrl = process.env.NEXT_PUBLIC_URL;
+
+  if (!baseUrl) {
+    console.error('Error: NEXT_PUBLIC_URL environment variable is not defined');
+  }
+
   useEffect(() => {
     axios
-      .get(`${process.env.NEXT_PUBLIC_URL}/api/books`, {
+      .get(`${baseUrl}/api/books`, {
         params: { filter, sortBy },
       })
       .then((response) => {
