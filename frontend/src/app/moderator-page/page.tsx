@@ -1,42 +1,37 @@
-// Updated moderator-page/page.tsx
+// frontend/src/app/moderator-page/page.tsx
 
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
 import axios from 'axios';
 
 export default function ModeratorPage() {
-  const [booksToExtract, setBooksToExtract] = useState([]);
   const [allBooks, setAllBooks] = useState([]);
   const [filter, setFilter] = useState('All Articles');
-
-  const baseUrl = process.env.NEXT_PUBLIC_URL;
-
-  if (!baseUrl) {
-    console.error('Error: NEXT_PUBLIC_URL environment variable is not defined');
-  }
+  const [sortBy, setSortBy] = useState('');
 
   useEffect(() => {
     axios
-      .get(`${baseUrl}/api/books`)
+      .get(`${process.env.NEXT_PUBLIC_URL}/api/books`, {
+        params: { filter, sortBy },
+      })
       .then((response) => {
         setAllBooks(response.data);
-        setBooksToExtract(response.data.filter((book) => !book.detailsExtracted));
       })
       .catch((error) => {
         console.error('Error fetching books:', error);
       });
-  }, []);
+  }, [filter, sortBy]);
 
-  const filteredBooks =
-    filter === 'All Articles'
-      ? allBooks
-      : filter === 'Duplicates'
-      ? allBooks.filter((book) => book.duplicate)
-      : filter === 'Unique'
-      ? allBooks.filter((book) => !book.duplicate)
-      : booksToExtract;
+  const filteredBooks = filter === 'All Articles'
+    ? allBooks
+    : filter === 'Duplicates'
+    ? allBooks.filter((book) => book.duplicate)
+    : filter === 'Unique'
+    ? allBooks.filter((book) => !book.duplicate)
+    : filter === 'Needs Extraction'
+    ? allBooks.filter((book) => !book.detailsExtracted)
+    : allBooks;
 
   return (
     <div>
@@ -48,24 +43,42 @@ export default function ModeratorPage() {
           <option value="Unique">Unique</option>
           <option value="Needs Extraction">Needs Extraction</option>
         </select>
+
+        <label>Sort By:</label>
+        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+          <option value="">None</option>
+          <option value="title">Title</option>
+          <option value="authors">Authors</option>
+          <option value="publicationYear">Publication Year</option>
+        </select>
       </div>
-      {filteredBooks.length > 0 ? (
-        filteredBooks.map((book) => (
-          <div key={book._id} className="article-card">
-            <h2>{book.title}</h2>
-            <p>By: {book.authors}</p>
-            {book.detailsExtracted ? (
-              <p>Verified</p>
-            ) : (
-              <Link href={`/moderator-page/extract-details/${book._id}`}>
-                <button>Extract Details</button>
-              </Link>
-            )}
-          </div>
-        ))
-      ) : (
-        <p>No books match the filter at the moment.</p>
-      )}
+      
+      <table className="article-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Authors</th>
+            <th>Publication Year</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredBooks.length > 0 ? (
+            filteredBooks.map((book) => (
+              <tr key={book._id}>
+                <td>{book.title}</td>
+                <td>{book.authors}</td>
+                <td>{book.publicationYear}</td>
+                <td>{book.detailsExtracted ? 'Verified' : 'Needs Extraction'}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="4">No books available.</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
     </div>
   );
 }
