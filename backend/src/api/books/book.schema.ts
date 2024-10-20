@@ -9,37 +9,37 @@ export class Book {
     title: string;
 
     @Prop({ required: true })
-    authors: string;  
+    authors: string;
 
     @Prop({ required: true })
-    journalName: string; 
+    journalName: string;
 
     @Prop({ required: true })
-    publicationYear: string;  
+    publicationYear: string;
 
     @Prop()
-    volume: string; 
+    volume: string;
 
     @Prop()
-    issueNumber: string;  
+    issueNumber: string;
 
     @Prop()
-    pages: string;  
+    pages: string;
 
     @Prop({ required: true })
-    doi: string; 
+    doi: string;
 
     @Prop()
-    keywords: string;  
+    keywords: string;
 
     @Prop()
-    typeOfResearch: string;  
+    typeOfResearch: string;
 
     @Prop()
-    abstract: string; 
+    abstract: string;
 
     @Prop()
-    institution: string; 
+    institution: string;
 
     @Prop({ type: Date })
     published_date: Date;

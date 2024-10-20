@@ -101,4 +101,23 @@ export class BookService {
         await book.save();
         return book;
     }
+
+    async extractDetails(id: string): Promise<Partial<Book>> {
+        const book = await this.bookModel.findById(id);
+        if (!book) {
+            throw new NotFoundException('Book not found');
+        }
+        
+        // Logic to extract required details
+        const extractedDetails: Partial<Book> = {
+            title: book.title,
+            authors: book.authors,
+            journalName: book.journalName,
+            publicationYear: book.publicationYear,
+            abstract: book.abstract,
+            keywords: book.keywords,
+        };
+        
+        return extractedDetails;
+    }
 }
