@@ -12,7 +12,7 @@ function ShowBookDetails() {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [ratingMessage, setRatingMessage] = useState<string>('');
-    const id = useParams<{ id: string }>().id;
+    const { id } = useParams<{ id: string }>() || {};
     const navigate = useRouter();
 
     useEffect(() => {

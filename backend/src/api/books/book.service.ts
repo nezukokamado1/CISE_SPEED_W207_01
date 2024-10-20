@@ -6,7 +6,7 @@ import { CreateBookDto } from './create-book.dto';
 
 @Injectable()
 export class BookService {
-    constructor(@InjectModel(Book.name) private bookModel: Model<Book>) { }
+      constructor(@InjectModel(Book.name) private bookModel: Model<Book>) {}
 
     test(): string {
         return 'book route testing';

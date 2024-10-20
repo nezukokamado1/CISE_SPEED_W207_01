@@ -6,7 +6,16 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export default function ModeratorPage() {
-  const [allBooks, setAllBooks] = useState([]);
+  interface Book {
+    _id: string;
+    title: string;
+    authors: string;
+    publicationYear: number;
+    duplicate: boolean;
+    detailsExtracted: boolean;
+  }
+
+  const [allBooks, setAllBooks] = useState<Book[]>([]);
   const [filter, setFilter] = useState('All Articles');
   const [sortBy, setSortBy] = useState('');
 
@@ -81,7 +90,7 @@ export default function ModeratorPage() {
             ))
           ) : (
             <tr>
-              <td colSpan="4">No books available.</td>
+              <td colSpan={4}>No books available.</td>
             </tr>
           )}
         </tbody>

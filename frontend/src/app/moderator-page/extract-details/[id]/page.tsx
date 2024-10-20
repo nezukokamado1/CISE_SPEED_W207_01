@@ -8,7 +8,14 @@ import { useRouter } from 'next/router';
 export default function ExtractDetailsPage() {
   const router = useRouter();
   const { id } = router.query;
-  const [book, setBook] = useState(null);
+  interface Book {
+    title: string;
+    keywords?: string;
+    abstract?: string;
+    institution?: string;
+  }
+
+  const [book, setBook] = useState<Book | null>(null);
   const [extractedDetails, setExtractedDetails] = useState({
     keywords: '',
     abstract: '',
